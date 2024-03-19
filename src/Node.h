@@ -30,7 +30,7 @@ public:
     double getDemand() const; // For delivery sites
     int getPopulation() const; // For delivery sites and cities
 
-    std::vector<Pipeline> adj;
+    std::vector<Pipeline *> adj;
 
 private:
     std::string name;
