@@ -5,10 +5,9 @@
 
 class Pipeline {
 public:
-    Pipeline(Node source, Node* target, double capacity);
+    Pipeline(Node* source, Node* target, double capacity);
 
     // Getter methods
-    Node getSource() const;
     Node getTarget() const;
     double getCapacity() const;
 
@@ -16,8 +15,7 @@ public:
     void setCapacity(double capacity);
 
 private:
-    Node sourceNode;
-    Node targetNode;
+    Node *targetNode;
     double capacity;
 };
 

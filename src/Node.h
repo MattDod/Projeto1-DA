@@ -14,12 +14,12 @@ enum class NodeType {
 
 class Node {
 public:
+    Node();
     Node(std::string name, NodeType type);
     Node(std::string name, NodeType type, double maxDeliveryCapacity); // Constructor for water reservoirs
     // Getter methods
     std::string getName() const;
     NodeType getType() const;
-    std::vector<Node*> getAdjacentNodes() const;
     double getCapacity() const; // For reservoirs and pumping stations
 
     std::vector<Pipeline> adj;
@@ -27,12 +27,8 @@ public:
 private:
     std::string name;
     NodeType type;
-    std::vector<Node*> adjacentNodes;
-
-    // Attributes specific to reservoirs and pumping stations
     double maxDeliveryCapacity; // For water reservoirs
     double currentFlow; // For pumping stations
-    // Add more attributes as needed for each type of node
 };
 
 

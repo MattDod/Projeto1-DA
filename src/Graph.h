@@ -13,7 +13,7 @@ public:
     void addNode(const Node& node);
 
     // Getter method to retrieve all nodes in the graph
-    const std::vector<Node>& getNodes() const;
+     const std::vector<Node>& getNodes() const;
 };
 
 #endif // PROJETODA_GRAPH_H
