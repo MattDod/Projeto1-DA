@@ -2,20 +2,20 @@
 #define PROJETODA_PIPELINE_H
 
 #include "Node.h"
-
+class Node;
 class Pipeline {
 public:
-    Pipeline(Node* source, Node* target, double capacity);
+    Pipeline(Node *source, Node *target, double capacity);
 
     // Getter methods
-    Node getTarget() const;
+    Node  * getTarget() const;
     double getCapacity() const;
 
     // Setter methods (if needed)
     void setCapacity(double capacity);
 
 private:
-    Node *targetNode;
+    Node * targetNode;
     double capacity;
 };
 

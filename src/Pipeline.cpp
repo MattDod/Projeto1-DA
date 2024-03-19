@@ -1,13 +1,13 @@
 #include "Pipeline.h"
 
 // Constructor
-Pipeline::Pipeline(Node* source, Node* target, double capacity)
+Pipeline::Pipeline(Node *source, Node *target, double capacity)
         : targetNode(target), capacity(capacity) {
     // Initialize other members if needed
 }
 
-Node Pipeline::getTarget() const {
-    return *targetNode;
+Node * Pipeline::getTarget() const {
+    return targetNode;
 }
 
 double Pipeline::getCapacity() const {
