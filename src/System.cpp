@@ -13,6 +13,8 @@ System::System(){
    readReservoir("../data/Reservoir.csv");
    readPipes("../data/Pipes.csv");
 
+
+
 }
 void System::readCities(const std::string &filename) {
     ifstream file(filename);
@@ -28,11 +30,13 @@ void System::readCities(const std::string &filename) {
         std::string city, code;
         double id, demand, population;
         char comma;
-        if (getline(s, city, ',') && s >> id >> comma &&
-            getline(s, code, ',') && s >> demand >> comma && s >> population) {
+        if (s >> city >> comma && s >> id >> comma && s >> code >> comma
+        && s >> demand >> comma && s >> population) {
             Node *nodecity = new Node(city, id, code, demand, population, NodeType::City);
             g.addNode(nodecity);
-
+            for(auto v : g.nodes){
+                cout << v->getCode();
+            }
 
         }
     }
@@ -58,7 +62,9 @@ void System::readStations(const std::string &filename) {
             getline(s, code, ',')){
             Node *nodecity = new Node(id, code, NodeType::PumpingStation);
             g.addNode(nodecity);
-
+            for(auto v : g.nodes){
+                cout << v->getCode();
+            }
 
         }
     }
@@ -85,7 +91,9 @@ void System::readReservoir(const std::string &filename){
             s >> id >> comma && getline(s, code, ',') && s >> maxDelivery) {
             Node *nodecity = new Node(reservoir, municipality, id, code, maxDelivery, NodeType::WaterReservoir);
             g.addNode(nodecity);
-
+            for(auto v : g.nodes){
+                cout << v->getCode();
+            }
 
 
         }
@@ -107,8 +115,8 @@ void System::readPipes(const std::string &filename) {
         string source, target;
         double capacity, direction;
         char comma;
-        if (getline(s,source, ',') && getline(s, target, ',')
-            && s >> capacity >> comma && s >> direction) {
+        if (s >> source >> comma && s >> target >> comma &&
+             s >> capacity >> comma && s >> direction) {
             auto v1 = g.findNode(source);
             auto v2 = g.findNode(target);
             v1->addPipe(v2, capacity, direction);
