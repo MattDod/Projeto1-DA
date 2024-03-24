@@ -16,17 +16,18 @@ enum class NodeType {
 class Node {
 public:
     Node(std::string name, double id, std::string code, double demand, double population, NodeType type);
-    Node(std::string name, std::string municipality, double id, std::string code, double maxDeliveryCapacity); // Constructor for water reservoirs
-    Node(double id, std::string code); // Constructor for delivery sites
+    Node(std::string name, std::string municipality, double id, std::string code, double maxDeliveryCapacity, NodeType type); // Constructor for water reservoirs
+    Node(double id, std::string code, NodeType type); // Constructor for delivery sites
 
 
     // Getter methods
     std::string getName() const;
-    std::string getId() const;
+    std::string getCode() const;
     NodeType getType() const;
     double getMaxDeliveryCapacity() const; // For water reservoirs
     double getDemand() const; // For delivery sites
     double getPopulation() const; // For delivery sites and cities
+    Pipeline * addPipe(Node *dest, double capacity, double direction);
 
     std::vector<Pipeline *> adj;
 

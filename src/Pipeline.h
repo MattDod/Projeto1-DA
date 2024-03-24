@@ -5,11 +5,12 @@
 class Node;
 class Pipeline {
 public:
-    Pipeline(Node *source, Node *target, double capacity);
+    Pipeline(Node *source, Node *target, double capacity, double direction);
 
     // Getter methods
     Node  * getTarget() const;
     double getCapacity() const;
+    double getDirection() const;
 
     // Setter methods (if needed)
     void setCapacity(double capacity);
@@ -17,6 +18,8 @@ public:
 private:
     Node * targetNode;
     double capacity;
+    double direction;
+    ;
 };
 
 #endif //PROJETODA_PIPELINE_H

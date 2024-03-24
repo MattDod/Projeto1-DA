@@ -10,3 +10,21 @@ void Graph::addNode(Node *node) {
 const std::vector<Node *> Graph::getNodes() const {
     return nodes;
 }
+
+
+bool Graph::addPipe(std::string source, std::string dest, double capacity, double direction) {
+    auto v1 = findNode(source);
+    auto v2 = findNode(dest);
+    if(v1 == nullptr || v1 == nullptr)
+        return false;
+    v1->addPipe(v2, capacity, direction);
+}
+
+Node * Graph::findNode(std::string code) const{
+    for (auto v : nodes){
+        if(v->getCode() == code){
+            return v;
+        }
+    }
+    return nullptr;
+}
