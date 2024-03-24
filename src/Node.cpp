@@ -1,22 +1,15 @@
 #include "Node.h"
 
-// Default constructor
-Node::Node() : name(""), type(NodeType::WaterReservoir), maxDeliveryCapacity(0), demand(0), population(0), currentFlow(0) {}
-
 // Parameterized constructor
-Node::Node(std::string name, NodeType type) : name(name), type(type), maxDeliveryCapacity(0), demand(0), population(0), currentFlow(0) {}
+Node::Node(std::string name, double id, std::string code, double demand, double population, NodeType type) : name(name), id(id), code(code), demand(demand), population(population), type(type) {}
 
 // Constructor for water reservoirs
-Node::Node(std::string name, NodeType type, double maxDeliveryCapacity)
-        : name(name), type(type), maxDeliveryCapacity(maxDeliveryCapacity), demand(0), population(0), currentFlow(0) {}
-
-// Constructor for delivery sites
-Node::Node(std::string name, NodeType type, double demand, int population)
-        : name(name), type(type), maxDeliveryCapacity(0), demand(demand), population(population), currentFlow(0) {}
+Node::Node(std::string name, std::string municipality, double id, std::string code, double maxDeliveryCapacity)
+        : name(name), municipality(municipality), id(id), code(code), maxDeliveryCapacity(maxDeliveryCapacity) {}
 
 // Constructor for cities
-Node::Node(std::string name, NodeType type, int population)
-        : name(name), type(type), maxDeliveryCapacity(0), demand(0), population(population), currentFlow(0) {}
+Node::Node(double id, std::string code)
+        : id(id), code(code) {}
 
 // Getter methods
 std::string Node::getName() const {
@@ -35,6 +28,6 @@ double Node::getDemand() const {
     return demand;
 }
 
-int Node::getPopulation() const {
+double Node::getPopulation() const {
     return population;
 }
