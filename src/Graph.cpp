@@ -12,15 +12,16 @@ const std::vector<Node *> Graph::getNodes() const {
 }
 
 
-bool Graph::addPipe(std::string source, std::string dest, double capacity, double direction) {
+bool Graph::addPipe(std::string &source, std::string &dest, double &capacity, double &direction) {
     auto v1 = findNode(source);
     auto v2 = findNode(dest);
-    if(v1 == nullptr || v1 == nullptr)
+    if(v1 == nullptr || v2 == nullptr)
         return false;
     v1->addPipe(v2, capacity, direction);
+    return true;
 }
 
-Node * Graph::findNode(std::string code) const{
+Node * Graph::findNode(std::string &code) const{
     for (auto v : nodes){
         if(v->getCode() == code){
             return v;

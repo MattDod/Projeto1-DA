@@ -11,6 +11,8 @@ System::System(){
    readCities("../data/Cities.csv");
    readStations("../data/Stations.csv");
    readReservoir("../data/Reservoir.csv");
+   readPipes("../data/Pipes.csv");
+
 }
 void System::readCities(const std::string &filename) {
     ifstream file(filename);
@@ -28,8 +30,8 @@ void System::readCities(const std::string &filename) {
         char comma;
         if (getline(s, city, ',') && s >> id >> comma &&
             getline(s, code, ',') && s >> demand >> comma && s >> population) {
-            Node nodecity(city, id, code, demand, population, NodeType::City);
-            g.addNode(&nodecity);
+            Node *nodecity = new Node(city, id, code, demand, population, NodeType::City);
+            g.addNode(nodecity);
 
 
         }
@@ -54,8 +56,8 @@ void System::readStations(const std::string &filename) {
         char comma;
         if (s >> id >> comma &&
             getline(s, code, ',')){
-            Node nodecity(id, code, NodeType::PumpingStation);
-            g.addNode(&nodecity);
+            Node *nodecity = new Node(id, code, NodeType::PumpingStation);
+            g.addNode(nodecity);
 
 
         }
@@ -81,12 +83,38 @@ void System::readReservoir(const std::string &filename){
         char comma;
         if (getline(s, reservoir, ',') && getline(s, municipality, ',') &&
             s >> id >> comma && getline(s, code, ',') && s >> maxDelivery) {
-            Node nodecity(reservoir, municipality, id, code, maxDelivery, NodeType::WaterReservoir);
-            cout << reservoir << municipality << id << code << maxDelivery;
-            g.addNode(&nodecity);
+            Node *nodecity = new Node(reservoir, municipality, id, code, maxDelivery, NodeType::WaterReservoir);
+            g.addNode(nodecity);
+
 
 
         }
     }
     file3.close();
+}
+
+//Service_Point_A,Service_Point_B,Capacity,Direction
+void System::readPipes(const std::string &filename) {
+    ifstream file4(filename);
+    string line;
+    std::getline(file4, line); // Ignora a primeira linha (cabeçalho)
+    if (!file4.is_open()) {
+        cerr << "Erro ao abrir o arquivo: " << filename << endl;
+        return;
+    }
+    while (getline(file4, line)) {
+        istringstream s(line);
+        string source, target;
+        double capacity, direction;
+        char comma;
+        if (getline(s,source, ',') && getline(s, target, ',')
+            && s >> capacity >> comma && s >> direction) {
+            auto v1 = g.findNode(source);
+            auto v2 = g.findNode(target);
+            v1->addPipe(v2, capacity, direction);
+
+        }
+
+    }
+    file4.close();
 }
