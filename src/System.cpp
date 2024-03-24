@@ -12,6 +12,9 @@ System::System(){
    readStations("../data/Stations.csv");
    readReservoir("../data/Reservoir.csv");
    readPipes("../data/Pipes.csv");
+    for(auto v : g.getNodes()){
+        cout << v->getCode();
+    }
 
 
 
@@ -27,18 +30,20 @@ void System::readCities(const std::string &filename) {
     }
     while (getline(file, line)) {
         istringstream s(line);
-        std::string city, code;
-        double id, demand, population;
-        char comma;
-        if (s >> city >> comma && s >> id >> comma && s >> code >> comma
-        && s >> demand >> comma && s >> population) {
-            Node *nodecity = new Node(city, id, code, demand, population, NodeType::City);
-            g.addNode(nodecity);
-            for(auto v : g.nodes){
-                cout << v->getCode();
-            }
+        std::string city, code, id, demand, population;
+        getline(s, city, ',');
+        getline(s, id, ',');
+        getline(s, code, ',');
+        getline(s, demand, ',');
+        getline(s, population, '\r');
+        double id2 = stod(id);
+        double demand2 = stod(demand);
+        double population2 = stod(population);
+        Node *nodecity = new Node(city, id2, code, demand2, population2, NodeType::City);
+        g.addNode(nodecity);
 
-        }
+
+
     }
     file.close();
 }
@@ -55,19 +60,15 @@ void System::readStations(const std::string &filename) {
     }
     while (getline(file2, line)) {
         istringstream s(line);
-        std::string code;
-        double id;
-        char comma;
-        if (s >> id >> comma &&
-            getline(s, code, ',')){
-            Node *nodecity = new Node(id, code, NodeType::PumpingStation);
-            g.addNode(nodecity);
-            for(auto v : g.nodes){
-                cout << v->getCode();
-            }
+        std::string code, id;
+        getline(s, id, ',');
+        getline(s, code, '\r');
+        double id2 = stod(id);
+        Node *nodecity = new Node(id2, code, NodeType::PumpingStation);
+        g.addNode(nodecity);
+
 
         }
-    }
     file2.close();
 }
 
@@ -84,19 +85,20 @@ void System::readReservoir(const std::string &filename){
     }
     while (getline(file3, line)) {
         istringstream s(line);
-        std::string reservoir, municipality, code;
-        double id, maxDelivery;
-        char comma;
-        if (getline(s, reservoir, ',') && getline(s, municipality, ',') &&
-            s >> id >> comma && getline(s, code, ',') && s >> maxDelivery) {
-            Node *nodecity = new Node(reservoir, municipality, id, code, maxDelivery, NodeType::WaterReservoir);
-            g.addNode(nodecity);
-            for(auto v : g.nodes){
-                cout << v->getCode();
-            }
+        std::string reservoir, municipality, id, code, maxDelivery;
+        getline(s, reservoir, ',');
+        getline(s, municipality, ',');
+        getline(s, id, ',');
+        getline(s, code, ',');
+        getline(s, maxDelivery, '\r');
+        double id2 = stod(id);
+        double maxDelivery2 = stod(maxDelivery);
+        Node *nodecity = new Node(reservoir, municipality, id2, code, maxDelivery2, NodeType::WaterReservoir);
+        g.addNode(nodecity);
 
 
-        }
+
+
     }
     file3.close();
 }
