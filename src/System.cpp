@@ -12,12 +12,11 @@ System::System(){
    readStations("../data/Stations.csv");
    readReservoir("../data/Reservoir.csv");
    readPipes("../data/Pipes.csv");
-    for(auto v : g.getNodes()){
-        cout << v->getCode();
+    for(auto v : g.nodes){
+        for(auto e : v->adj){
+            cout << e->getCapacity() << e->getTarget()->getCode() << e->getDirection() << endl;
+        }
     }
-
-
-
 }
 void System::readCities(const std::string &filename) {
     ifstream file(filename);
@@ -114,16 +113,19 @@ void System::readPipes(const std::string &filename) {
     }
     while (getline(file4, line)) {
         istringstream s(line);
-        string source, target;
-        double capacity, direction;
-        char comma;
-        if (s >> source >> comma && s >> target >> comma &&
-             s >> capacity >> comma && s >> direction) {
-            auto v1 = g.findNode(source);
-            auto v2 = g.findNode(target);
-            v1->addPipe(v2, capacity, direction);
+        string source, target, capacity, direction;
+        getline(s, source, ',');
+        getline(s, target, ',');
+        getline(s, capacity, ',');
+        getline(s, direction, '\r');
+        double capacity2 = stod(capacity);
+        double direction2 = stod(direction);
+        auto v1 = g.findNode(source);
+        auto v2 = g.findNode(target);
+        v1->addPipe(v2, capacity2, direction2);
 
-        }
+
+
 
     }
     file4.close();
