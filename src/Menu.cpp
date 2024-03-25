@@ -12,5 +12,8 @@ void Menu::start(System system){
         cout << "Press a number to continue or press 0 to quit" << endl;
         int choice;
         cin >> choice;
+        if(choice == 0){
+            break;
+        }
     }
 }

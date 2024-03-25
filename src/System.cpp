@@ -8,13 +8,14 @@
 #include "System.h"
 
 System::System(){
-   readCities("../data/Cities.csv");
-   readStations("../data/Stations.csv");
-   readReservoir("../data/Reservoir.csv");
-   readPipes("../data/Pipes.csv");
+   readCities("../small_data/Cities_Madeira.csv");
+   readStations("../small_data/Stations_Madeira.csv");
+   readReservoir("../small_data/Reservoirs_Madeira.csv");
+   readPipes("../small_data/Pipes_Madeira.csv");
     for(auto v : g.nodes){
+        cout<< v->getCode() << endl;
         for(auto e : v->adj){
-            cout << e->getCapacity() << e->getTarget()->getCode() << e->getDirection() << endl;
+            cout << e->getCapacity() <<" "<< e->getTarget()->getCode() <<" "<< e->getDirection() << endl;
         }
     }
 }
@@ -123,10 +124,10 @@ void System::readPipes(const std::string &filename) {
         auto v1 = g.findNode(source);
         auto v2 = g.findNode(target);
         v1->addPipe(v2, capacity2, direction2);
-
-
-
-
+        //Handling the case where the pipeline is bidirectional
+        if(direction2 == 0){
+            v2->addPipe(v1, capacity2, direction2);
+        }
     }
     file4.close();
 }
