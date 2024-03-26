@@ -17,6 +17,7 @@ public:
     void readPipes(const string &filename);
     void readReservoir(const string &filename);
     void readStations(const string &filename);
+    void edmondsKarp();
 
     void showgraph();
 

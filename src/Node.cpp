@@ -11,6 +11,8 @@ Node::Node(std::string name, std::string municipality, double id, std::string co
 Node::Node(double id, std::string code, NodeType type)
         : id(id), code(code), type(type) {}
 
+Node::Node(std::string code, NodeType type) : code(code), type(type) {}
+
 // Getter methods
 std::string Node::getName() const {
     return name;
@@ -44,6 +46,10 @@ std::string Node::getCode() const {
     return code;
 }
 
+Pipeline *Node::getPath() const{
+    return path;
+}
+
 Pipeline* Node::addPipe(Node *dest, double capacity, double direction) {
     auto newPipe = new Pipeline(this,dest,  capacity, direction);
     adj.push_back(newPipe);
@@ -56,6 +62,10 @@ bool Node::isVisited() const {
 
 void Node::setVisited(bool value) {
     this->visited = value;
+}
+
+void Node::setPath(Pipeline *path) {
+    this->path = path;
 }
 
 std::vector<Pipeline *> Node::getAdj() const {

@@ -21,3 +21,11 @@ double Pipeline::getDirection() const{
 void Pipeline::setCapacity(double newCapacity) {
     capacity = newCapacity;
 }
+
+double Pipeline::getFlow() const {
+    return flow;
+}
+
+void Pipeline::setFlow(double flow) {
+    this->flow = flow;
+}

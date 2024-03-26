@@ -11,15 +11,17 @@ public:
     Node  * getTarget() const;
     double getCapacity() const;
     double getDirection() const;
+    double getFlow() const;
 
     // Setter methods (if needed)
     void setCapacity(double capacity);
+    void setFlow(double flow);
 
 private:
     Node * targetNode;
     double capacity;
     double direction;
-    ;
+    double flow;
 };
 
 #endif //PROJETODA_PIPELINE_H

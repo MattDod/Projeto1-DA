@@ -10,7 +10,9 @@ class Pipeline;
 enum class NodeType {
     WaterReservoir,
     PumpingStation,
-    City
+    City,
+    SuperSource,
+    SuperSink
 };
 
 class Node {
@@ -18,6 +20,7 @@ public:
     Node(std::string name, double id, std::string code, double demand, double population, NodeType type);
     Node(std::string name, std::string municipality, double id, std::string code, double maxDeliveryCapacity, NodeType type); // Constructor for water reservoirs
     Node(double id, std::string code, NodeType type); // Constructor for delivery sites
+    Node(std::string code, NodeType type); // Constructor for super source/sink
 
 
     // Getter methods
@@ -29,9 +32,13 @@ public:
     double getMaxDeliveryCapacity() const; // For water reservoirs
     double getDemand() const; // For delivery sites
     double getPopulation() const; // For delivery sites and cities
+    Pipeline *getPath() const;
+
+
     Pipeline * addPipe(Node *dest, double capacity, double direction);
     bool isVisited() const;
     void setVisited(bool value);
+    void setPath(Pipeline *path);
     std::vector<Pipeline *> getAdj() const;
 
 
@@ -47,7 +54,8 @@ private:
     double demand; // For delivery sites
     double population; // For delivery sites and cities
     double currentFlow; // For pumping stations
-    bool visited;
+    bool visited = false;
+    Pipeline *path = nullptr;
 };
 
 #endif //PROJETODA_NODE_H

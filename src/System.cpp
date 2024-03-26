@@ -19,6 +19,7 @@ System::System(){
         }
     }
 }
+
 void System::readCities(const std::string &filename) {
     ifstream file(filename);
     string line;
@@ -41,13 +42,9 @@ void System::readCities(const std::string &filename) {
         double population2 = stod(population);
         Node *nodecity = new Node(city, id2, code, demand2, population2, NodeType::City);
         g.addNode(nodecity);
-
-
-
     }
     file.close();
 }
-
 
 void System::readStations(const std::string &filename) {
     ifstream file2(filename);
@@ -73,7 +70,6 @@ void System::readStations(const std::string &filename) {
 }
 
 //Reservoir,Municipality,Id,Code,Maximum Delivery (m3/sec)
-
 void System::readReservoir(const std::string &filename){
     ifstream file3(filename);
     string line;
@@ -126,4 +122,25 @@ void System::readPipes(const std::string &filename) {
         }
     }
     file4.close();
+}
+
+void System::edmondsKarp() {
+    //Create a deep copy of the graph to allow manipulation without changing the original
+    Graph copy;
+    copy.copyGraph(g);
+    //Create super source and super sink nodes and add them
+    Node* superSource = new Node("SuperSource", NodeType::SuperSource);
+    Node* superSink = new Node("SuperSink", NodeType::SuperSink);
+    copy.addNode(superSource);
+    copy.addNode(superSink);
+    for(auto node : copy.getNodes()){
+        //Connect super source to water reservoirs ("weight" of the pipeline is the maximum delivery capacity of the reservoir)
+        if(node->getType() == NodeType::WaterReservoir){
+            superSource->addPipe(node, node->getMaxDeliveryCapacity(), 0);
+        }
+        //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
+        else if(node->getType() == NodeType::City){
+            superSink->addPipe(node, node->getDemand(), 0);
+        }
+    }
 }
