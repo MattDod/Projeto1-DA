@@ -29,3 +29,30 @@ Node * Graph::findNode(std::string &code) const{
     }
     return nullptr;
 }
+
+void Graph::copyGraph(const Graph &g) {
+    for(auto v : g.getNodes()) {
+        NodeType type = v->getType();
+        Node *toAdd;
+        switch (type) {
+            case NodeType::City: {
+                toAdd = new Node(v->getName(), v->getId(), v->getCode(), v->getDemand(), v->getPopulation(), NodeType::City);
+                addNode(toAdd);
+                break;
+            }
+            case NodeType::PumpingStation: {
+                toAdd = new Node(v->getId(), v->getCode(), NodeType::PumpingStation);
+                addNode(toAdd);
+                break;
+            }
+            case NodeType::WaterReservoir: {
+                toAdd = new Node(v->getName(), v->getMunicipality(), v->getId(), v->getCode(), v->getMaxDeliveryCapacity(), NodeType::WaterReservoir);
+                addNode(toAdd);
+                break;
+            }
+        }
+        for(auto pipe : v->getAdj()) {
+            toAdd->addPipe(pipe->getTarget(), pipe->getCapacity()+5, pipe->getDirection());
+        }
+    }
+}

@@ -95,10 +95,6 @@ void System::readReservoir(const std::string &filename){
         double maxDelivery2 = stod(maxDelivery);
         Node *nodecity = new Node(reservoir, municipality, id2, code, maxDelivery2, NodeType::WaterReservoir);
         g.addNode(nodecity);
-
-
-
-
     }
     file3.close();
 }

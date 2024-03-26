@@ -20,6 +20,14 @@ NodeType Node::getType() const {
     return type;
 }
 
+std::string Node::getMunicipality() const{
+    return municipality;
+}
+
+double Node::getId() const{
+    return id;
+}
+
 double Node::getMaxDeliveryCapacity() const {
     return maxDeliveryCapacity;
 }
@@ -40,4 +48,16 @@ Pipeline* Node::addPipe(Node *dest, double capacity, double direction) {
     auto newPipe = new Pipeline(this,dest,  capacity, direction);
     adj.push_back(newPipe);
     return newPipe;
+}
+
+bool Node::isVisited() const {
+    return visited;
+}
+
+void Node::setVisited(bool value) {
+    this->visited = value;
+}
+
+std::vector<Pipeline *> Node::getAdj() const {
+    return adj;
 }

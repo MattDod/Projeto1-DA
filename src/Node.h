@@ -22,12 +22,18 @@ public:
 
     // Getter methods
     std::string getName() const;
+    std::string getMunicipality() const;
     std::string getCode() const;
+    double getId() const;
     NodeType getType() const;
     double getMaxDeliveryCapacity() const; // For water reservoirs
     double getDemand() const; // For delivery sites
     double getPopulation() const; // For delivery sites and cities
     Pipeline * addPipe(Node *dest, double capacity, double direction);
+    bool isVisited() const;
+    void setVisited(bool value);
+    std::vector<Pipeline *> getAdj() const;
+
 
     std::vector<Pipeline *> adj;
 
@@ -41,6 +47,7 @@ private:
     double demand; // For delivery sites
     double population; // For delivery sites and cities
     double currentFlow; // For pumping stations
+    bool visited;
 };
 
 #endif //PROJETODA_NODE_H

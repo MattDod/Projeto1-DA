@@ -13,6 +13,7 @@ public:
     std::vector<Node *> nodes;
     // Getter method to retrieve all nodes in the graph
     const std::vector<Node *> getNodes() const;
+    void copyGraph(const Graph &g);
 
     Node *findNode(std::string &code) const;
 };
