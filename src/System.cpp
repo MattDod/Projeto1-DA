@@ -7,6 +7,10 @@
 #include <iostream>
 #include "System.h"
 
+Graph System::getGraph() const {
+    return g;
+}
+
 System::System(){
    readCities("../small_data/Cities_Madeira.csv");
    readStations("../small_data/Stations_Madeira.csv");
@@ -31,10 +35,10 @@ System::System(){
     */
 }
 
-void System::readCities(const std::string &filename) {
+void System::readCities(const string &filename) {
     ifstream file(filename);
     string line;
-    std::getline(file, line); // Ignora a primeira linha (cabeçalho)
+    getline(file, line); // Ignora a primeira linha (cabeçalho)
 
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: " << filename << endl;
@@ -42,7 +46,7 @@ void System::readCities(const std::string &filename) {
     }
     while (getline(file, line)) {
         istringstream s(line);
-        std::string city, code, id, demand, population;
+        string city, code, id, demand, population;
         getline(s, city, ',');
         getline(s, id, ',');
         getline(s, code, ',');
@@ -57,10 +61,10 @@ void System::readCities(const std::string &filename) {
     file.close();
 }
 
-void System::readStations(const std::string &filename) {
+void System::readStations(const string &filename) {
     ifstream file2(filename);
     string line;
-    std::getline(file2, line); // Ignora a primeira linha (cabeçalho)
+    getline(file2, line); // Ignora a primeira linha (cabeçalho)
 
     if (!file2.is_open()) {
         cerr << "Erro ao abrir o arquivo: " << filename << endl;
@@ -68,7 +72,7 @@ void System::readStations(const std::string &filename) {
     }
     while (getline(file2, line)) {
         istringstream s(line);
-        std::string code, id;
+        string code, id;
         getline(s, id, ',');
         getline(s, code, '\r');
         double id2 = stod(id);
@@ -79,10 +83,10 @@ void System::readStations(const std::string &filename) {
 }
 
 //Reservoir,Municipality,Id,Code,Maximum Delivery (m3/sec)
-void System::readReservoir(const std::string &filename){
+void System::readReservoir(const string &filename){
     ifstream file3(filename);
     string line;
-    std::getline(file3, line); // Ignora a primeira linha (cabeçalho)
+    getline(file3, line); // Ignora a primeira linha (cabeçalho)
 
     if (!file3.is_open()) {
         cerr << "Erro ao abrir o arquivo: " << filename << endl;
@@ -90,7 +94,7 @@ void System::readReservoir(const std::string &filename){
     }
     while (getline(file3, line)) {
         istringstream s(line);
-        std::string reservoir, municipality, id, code, maxDelivery;
+        string reservoir, municipality, id, code, maxDelivery;
         getline(s, reservoir, ',');
         getline(s, municipality, ',');
         getline(s, id, ',');
@@ -105,10 +109,10 @@ void System::readReservoir(const std::string &filename){
 }
 
 //Service_Point_A,Service_Point_B,Capacity,Direction
-void System::readPipes(const std::string &filename) {
+void System::readPipes(const string &filename) {
     ifstream file4(filename);
     string line;
-    std::getline(file4, line); // Ignora a primeira linha (cabeçalho)
+    getline(file4, line); // Ignora a primeira linha (cabeçalho)
     if (!file4.is_open()) {
         cerr << "Erro ao abrir o arquivo: " << filename << endl;
         return;
@@ -133,10 +137,7 @@ void System::readPipes(const std::string &filename) {
     file4.close();
 }
 
-void System::edmondsKarp() {
-    //Create a deep copy of the graph to allow manipulation without changing the original
-    Graph *copy = new Graph();
-    copy->copyGraph(g);
+void System::edmondsKarp(Graph *copy) {
     //Create super source and super sink nodes and add them
     Node* superSource = new Node("SuperSource", NodeType::SuperSource);
     Node* superSink = new Node("SuperSink", NodeType::SuperSink);
@@ -161,24 +162,13 @@ void System::edmondsKarp() {
         double bottleneck = findBottleneckCapacity(superSource, superSink);
         updateResidualGraph(superSource, superSink, bottleneck);
     }
-
-    //Print each city flow
-    for(auto n : copy->getNodes()){
-        if(n->getType() == NodeType::City){
-            double flow = 0;
-            for(auto p : n->getIncoming()){
-                flow += p->getFlow();
-            }
-            cout << n->getCode() << " " << flow << endl;
-        }
-    }
 }
 
 bool System::findAugmentingPath(Graph *graph, Node *source, Node *sink) {
     for(auto n : graph->getNodes()) n->setVisited(false);
 
     source->setVisited(true);
-    std::queue<Node *> q;
+    queue<Node *> q;
     q.push(source);
 
     while(!q.empty() && !sink->isVisited()){
@@ -204,15 +194,15 @@ bool System::findAugmentingPath(Graph *graph, Node *source, Node *sink) {
 }
 
 double System::findBottleneckCapacity(Node *source, Node *sink){
-    double bottleneck = std::numeric_limits<double>::max();
+    double bottleneck = numeric_limits<double>::max();
     for(auto n = sink; n != source; ){
         auto p = n->getPath();
         if (p->getTarget() == n){
-            bottleneck = std::min(bottleneck, p->getCapacity() - p->getFlow());
+            bottleneck = min(bottleneck, p->getCapacity() - p->getFlow());
             n = p->getSourceNode();
         }
         else{
-            bottleneck = std::min(bottleneck, p->getFlow());
+            bottleneck = min(bottleneck, p->getFlow());
             n = p->getTarget();
         }
     }
@@ -231,4 +221,126 @@ void System::updateResidualGraph(Node *source, Node *sink, double bottleneck){
             n = p->getTarget();
         }
     }
+}
+
+void System::printFlow(Graph *graph, string choiceCode) {
+    cout << "Code" << " " << "Value" << endl;
+    if(choiceCode == "all"){
+        for(auto n : graph->getNodes()){
+            if(n->getType() == NodeType::City){
+                double flow = 0;
+                for(auto p : n->getIncoming()){
+                    flow += p->getFlow();
+                }
+                cout << n->getCode() << " " << flow << endl;
+            }
+        }
+    }
+    else{
+        double flow=0;
+        Node* n = graph->findNode(choiceCode);
+        for(auto p : n->getIncoming()){
+            flow+=p->getFlow();
+        }
+        cout << n->getCode() << " " << flow << endl;
+    }
+}
+
+void System::cityNeeds(Graph *graph) {
+    cout << endl;
+    vector<pair<string, double>> met;
+    vector<pair<string, double>> notMet;
+    for(auto n : graph->getNodes()){
+        if(n->getType() == NodeType::City){
+            double flow = 0;
+            for(auto p : n->getIncoming()){
+                flow += p->getFlow();
+            }
+            double check = n->getDemand() - flow;
+            if(check == 0){
+                met.push_back(make_pair(n->getCode(), flow));
+            }
+            else{
+                notMet.push_back(make_pair(n->getCode(), check));
+            }
+        }
+    }
+    if(!met.empty()){
+        cout << "Cities whose demand was met:" << endl << "(Code, Demand)" << endl;
+        for(auto p : met){
+            cout << p.first << " " << p.second << endl;
+        }
+    }
+    cout << endl;
+    if(!notMet.empty()){
+        cout << "Cities whose demand was not met:" << endl << "(Code, Deficit)" << endl;
+        for(auto p : notMet){
+            cout << p.first << " " << p.second << endl;
+        }
+    }
+}
+
+void System::edmondsKarpAvoid(Graph *copy, string avoid){
+    //Create super source and super sink nodes and add them
+    Node* superSource = new Node("SuperSource", NodeType::SuperSource);
+    Node* superSink = new Node("SuperSink", NodeType::SuperSink);
+    copy->addNode(superSource);
+    copy->addNode(superSink);
+    for(auto node : copy->getNodes()){
+        //Connect super source to water reservoirs ("weight" of the pipeline is the maximum delivery capacity of the reservoir)
+        if(node->getType() == NodeType::WaterReservoir){
+            superSource->addPipe(node, node->getMaxDeliveryCapacity(), 0);
+        }
+            //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
+        else if(node->getType() == NodeType::City){
+            node->addPipe(superSink, node->getDemand(), 0);
+        }
+    }
+
+    for (auto n : g.getNodes()){
+        n->setVisited(false);
+        for (auto p: n->getAdj()) p->setFlow(0);
+    }
+
+    while(findAugmentingPathAvoid(copy, superSource, superSink, avoid)){
+        double bottleneck = findBottleneckCapacity(superSource, superSink);
+        updateResidualGraph(superSource, superSink, bottleneck);
+    }
+
+}
+
+bool System::findAugmentingPathAvoid(Graph *graph, Node *source, Node *sink, string avoid){
+    //Very similar to findAugmentingPath, but when initializing all nodes' visited status to false
+    //Whenever we encounter the node that we want to avoid, we set its visited status to true, so it's never added to the queue
+    for(auto n : graph->getNodes()) {
+        if(n->getCode() == avoid)
+            n->setVisited(true);
+        else
+            n->setVisited(false);
+    }
+
+    source->setVisited(true);
+    queue<Node *> q;
+    q.push(source);
+
+    while(!q.empty() && !sink->isVisited()){
+        auto n = q.front();
+        q.pop();
+        for(auto p: n->getAdj()) {
+            if (!p->getTarget()->isVisited() && (p->getCapacity() - p->getFlow()) > 0) {
+                p->getTarget()->setVisited(true);
+                p->getTarget()->setPath(p);
+                q.push(p->getTarget());
+            }
+        }
+        for(auto p: n->getIncoming()) {
+            Node* origin = p->getSourceNode();
+            if (!origin->isVisited() && p->getFlow() > 0) {
+                origin->setVisited(true);
+                origin->setPath(p);
+                q.push(origin);
+            }
+        }
+    }
+    return sink->isVisited();
 }
