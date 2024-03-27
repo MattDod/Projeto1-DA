@@ -2,9 +2,6 @@
 #include "System.h"
 #include "Menu.h"
 
-//
-// Created by kamert on 19-03-2024.
-//
 using namespace std;
 
 void Menu::start(System system){

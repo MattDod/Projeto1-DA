@@ -1,7 +1,3 @@
-//
-// Created by kamert on 19-03-2024.
-//
-
 #ifndef PROJETODA_SYSTEM_H
 #define PROJETODA_SYSTEM_H
 
