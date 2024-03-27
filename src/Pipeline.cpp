@@ -2,8 +2,12 @@
 
 // Constructor
 Pipeline::Pipeline(Node *source, Node *target, double capacity, double direction)
-        : targetNode(target), capacity(capacity), direction(direction) {
+        : sourceNode(source), targetNode(target), capacity(capacity), direction(direction) {
     // Initialize other members if needed
+}
+
+Node *Pipeline::getSourceNode() const {
+    return sourceNode;
 }
 
 Node * Pipeline::getTarget() const {
@@ -29,3 +33,4 @@ double Pipeline::getFlow() const {
 void Pipeline::setFlow(double flow) {
     this->flow = flow;
 }
+

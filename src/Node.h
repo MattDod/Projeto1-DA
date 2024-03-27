@@ -40,9 +40,7 @@ public:
     void setVisited(bool value);
     void setPath(Pipeline *path);
     std::vector<Pipeline *> getAdj() const;
-
-
-    std::vector<Pipeline *> adj;
+    std::vector<Pipeline *> getIncoming() const;
 
 private:
     std::string name;
@@ -56,6 +54,8 @@ private:
     double currentFlow; // For pumping stations
     bool visited = false;
     Pipeline *path = nullptr;
+    std::vector<Pipeline *> adj;
+    std::vector<Pipeline *> incoming;
 };
 
 #endif //PROJETODA_NODE_H

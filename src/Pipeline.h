@@ -8,7 +8,8 @@ public:
     Pipeline(Node *source, Node *target, double capacity, double direction);
 
     // Getter methods
-    Node  * getTarget() const;
+    Node *getSourceNode() const;
+    Node *getTarget() const;
     double getCapacity() const;
     double getDirection() const;
     double getFlow() const;
@@ -18,6 +19,7 @@ public:
     void setFlow(double flow);
 
 private:
+    Node * sourceNode;
     Node * targetNode;
     double capacity;
     double direction;

@@ -2,6 +2,7 @@
 #define PROJETODA_GRAPH_H
 
 #include <vector>
+#include <queue>
 #include "Node.h"
 
 class Graph {

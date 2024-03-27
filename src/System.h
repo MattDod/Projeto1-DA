@@ -17,7 +17,12 @@ public:
     void readPipes(const string &filename);
     void readReservoir(const string &filename);
     void readStations(const string &filename);
+    //Edmonds-Karp algorithm functions
     void edmondsKarp();
+    bool findAugmentingPath(Graph *graph, Node *source, Node *sink);
+    double findBottleneckCapacity(Node *source, Node *sink);
+    void updateResidualGraph(Node *source, Node *sink, double bottleneck);
+
 
     void showgraph();
 

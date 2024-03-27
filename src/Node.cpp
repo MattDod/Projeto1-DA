@@ -53,6 +53,7 @@ Pipeline *Node::getPath() const{
 Pipeline* Node::addPipe(Node *dest, double capacity, double direction) {
     auto newPipe = new Pipeline(this,dest,  capacity, direction);
     adj.push_back(newPipe);
+    dest->incoming.push_back(newPipe);
     return newPipe;
 }
 
@@ -70,4 +71,8 @@ void Node::setPath(Pipeline *path) {
 
 std::vector<Pipeline *> Node::getAdj() const {
     return adj;
+}
+
+std::vector<Pipeline *> Node::getIncoming() const {
+    return incoming;
 }

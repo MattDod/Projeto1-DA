@@ -31,28 +31,37 @@ Node * Graph::findNode(std::string &code) const{
 }
 
 void Graph::copyGraph(const Graph &g) {
-    for(auto v : g.getNodes()) {
-        NodeType type = v->getType();
+    for(auto n : g.getNodes()) {
+        NodeType type = n->getType();
         Node *toAdd;
         switch (type) {
             case NodeType::City: {
-                toAdd = new Node(v->getName(), v->getId(), v->getCode(), v->getDemand(), v->getPopulation(), NodeType::City);
+                toAdd = new Node(n->getName(), n->getId(), n->getCode(), n->getDemand(), n->getPopulation(), NodeType::City);
                 addNode(toAdd);
                 break;
             }
             case NodeType::PumpingStation: {
-                toAdd = new Node(v->getId(), v->getCode(), NodeType::PumpingStation);
+                toAdd = new Node(n->getId(), n->getCode(), NodeType::PumpingStation);
                 addNode(toAdd);
                 break;
             }
             case NodeType::WaterReservoir: {
-                toAdd = new Node(v->getName(), v->getMunicipality(), v->getId(), v->getCode(), v->getMaxDeliveryCapacity(), NodeType::WaterReservoir);
+                toAdd = new Node(n->getName(), n->getMunicipality(), n->getId(), n->getCode(), n->getMaxDeliveryCapacity(), NodeType::WaterReservoir);
                 addNode(toAdd);
                 break;
             }
         }
-        for(auto pipe : v->getAdj()) {
-            toAdd->addPipe(pipe->getTarget(), pipe->getCapacity()+5, pipe->getDirection());
+    }
+    for(auto n : this->getNodes()){
+        std::string code = n->getCode();
+        Node *originalNode = g.findNode(code);
+        for(auto p : originalNode->getAdj()){
+            Node* originalTarget = p->getTarget();
+            std::string targetCode = originalTarget->getCode();
+            Node* target = this->findNode(targetCode);
+            double capacity = p->getCapacity();
+            double direction = p->getDirection();
+            n->addPipe(target, capacity, direction);
         }
     }
 }
