@@ -8,27 +8,10 @@ Graph System::getGraph() const {
 }
 
 System::System(){
-    readCities("../small_data/Cities_Madeira.csv");
-    readStations("../small_data/Stations_Madeira.csv");
-    readReservoir("../small_data/Reservoirs_Madeira.csv");
-    readPipes("../small_data/Pipes_Madeira.csv");
-    /*cout<<"Original Graph:"<<endl;
-    for(auto v : g.nodes){
-         cout<<"Node:"<<endl;
-         cout<< v->getCode() << endl;
-         cout<<endl;
-         cout<<"Outgoing:"<<endl;
-         for(auto e : v->getAdj()){
-             cout << e->getCapacity() <<" "<< e->getTarget()->getCode() <<" "<< e->getDirection() << endl;
-         }
-         cout<<endl;
-         cout<<"Incoming:"<<endl;
-         for(auto e : v->getIncoming()){
-             cout << e->getCapacity() <<" "<< e->getSourceNode()->getCode() <<" "<< e->getDirection() << endl;
-         }
-         cout<<endl;
-    }
-     */
+    readCities("../data/Cities.csv");
+    readStations("../data/Stations.csv");
+    readReservoir("../data/Reservoir.csv");
+    readPipes("../data/Pipes.csv");
 }
 
 void System::readCities(const string &filename) {
@@ -279,7 +262,7 @@ void System::cityNeeds(Graph *graph) {
     }
 }
 
-void System::edmondsKarpAvoid(Graph *copy, string avoid){
+void System::edmondsKarpAvoidNode(Graph *copy, string avoid){
     //Create super source and super sink nodes and add them
     Node* superSource = new Node("SuperSource", NodeType::SuperSource);
     Node* superSink = new Node("SuperSink", NodeType::SuperSink);
@@ -290,7 +273,7 @@ void System::edmondsKarpAvoid(Graph *copy, string avoid){
         if(node->getType() == NodeType::WaterReservoir){
             superSource->addPipe(node, node->getMaxDeliveryCapacity(), 0);
         }
-            //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
+        //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
         else if(node->getType() == NodeType::City){
             node->addPipe(superSink, node->getDemand(), 0);
         }
@@ -305,7 +288,6 @@ void System::edmondsKarpAvoid(Graph *copy, string avoid){
         double bottleneck = findBottleneckCapacity(superSource, superSink);
         updateResidualGraph(superSource, superSink, bottleneck);
     }
-
 }
 
 bool System::findAugmentingPathAvoid(Graph *graph, Node *source, Node *sink, string avoid){
@@ -354,4 +336,39 @@ vector<pair<Node*, double>> System::cityFlowInfo(Graph *graph){
         }
     }
     return cityFlow;
+}
+
+void System::edmondsKarpAvoidPipeline(Graph *copy, Pipeline *avoid) {
+    //Create super source and super sink nodes and add them
+    Node* superSource = new Node("SuperSource", NodeType::SuperSource);
+    Node* superSink = new Node("SuperSink", NodeType::SuperSink);
+    copy->addNode(superSource);
+    copy->addNode(superSink);
+    for(auto node : copy->getNodes()){
+        //Connect super source to water reservoirs ("weight" of the pipeline is the maximum delivery capacity of the reservoir)
+        if(node->getType() == NodeType::WaterReservoir){
+            superSource->addPipe(node, node->getMaxDeliveryCapacity(), 0);
+        }
+            //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
+        else if(node->getType() == NodeType::City){
+            node->addPipe(superSink, node->getDemand(), 0);
+        }
+    }
+    string avoidSourceCode = avoid->getSourceNode()->getCode();
+    string avoidTargetCode = avoid->getTarget()->getCode();
+
+    for (auto n : copy->getNodes()){
+        n->setVisited(false);
+        for (auto p: n->getAdj()) {
+            if((p->getTarget()->getCode() == avoidTargetCode && p->getSourceNode()->getCode() == avoidSourceCode) || (p->getTarget()->getCode() == avoidSourceCode && p->getSourceNode()->getCode() == avoidTargetCode)){
+                p->setCapacity(0);
+            }
+            p->setFlow(0);
+        }
+    }
+
+    while(findAugmentingPath(copy, superSource, superSink )){
+        double bottleneck = findBottleneckCapacity(superSource, superSink);
+        updateResidualGraph(superSource, superSink, bottleneck);
+    }
 }

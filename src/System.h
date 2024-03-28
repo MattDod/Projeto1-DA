@@ -28,7 +28,8 @@ public:
     void cityNeeds(Graph *graph);
 
     //Special Edmonds-Karp algorithm functions
-    void edmondsKarpAvoid(Graph *copy, string avoid);
+    void edmondsKarpAvoidNode(Graph *copy, string avoid);
+    void edmondsKarpAvoidPipeline(Graph *copy, Pipeline *avoid);
     bool findAugmentingPathAvoid(Graph *graph, Node *source, Node *sink, string avoid);
     vector<pair<Node*, double>> cityFlowInfo(Graph *graph);
 

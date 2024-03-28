@@ -12,10 +12,10 @@ void Menu::start(System system){
     while(true) {
         Graph *copy = new Graph();
         copy->copyGraph(system.getGraph());
-        cout << endl << "Menu:" << endl;
-        cout << "1: Analyse the maximum amount of water" << endl;
-        cout << "2: Analyse what would happen if the network were to change" << endl;
-        cout << "Press a number to continue or press 0 to quit" << endl;
+        cout << endl << "Menu:" << endl << endl;
+        cout << "1: Analyse the normal flow of water." << endl;
+        cout << "2: Analyse what would happen if the network were to change." << endl;
+        cout << "0: Quit" << endl;
         int choice;
         cin >> choice;
         while (0 < choice && choice > 2) {
@@ -38,9 +38,9 @@ void Menu::start(System system){
 }
 
 void Menu::normalFlowMenu(System system, Graph *graph){
-    cout << endl;
-    cout << "1: Choose a specific city" << endl;
-    cout << "2: Choose all cities" << endl;
+    cout << endl << "Analyse the normal flow of water." << endl << endl;
+    cout << "1: Of a specific city" << endl;
+    cout << "2: Of all cities" << endl;
     cout << "3: Check if the cities' needs are met" << endl;
     int option;
     cin >> option;
@@ -75,9 +75,10 @@ void Menu::normalFlowMenu(System system, Graph *graph){
 }
 
 void Menu::avoidFlowMenu(System system, Graph *graph) {
-    cout << endl;
-    cout << "1: A Water Reservoir were to be out of comission" << endl;
+    cout << endl << "Analyse what would happen if:" << endl << endl;
+    cout << "1: A Water Reservoir were to be out of commission" << endl;
     cout << "2: A Pumping Station were to be taken out of service" << endl;
+    cout << "3: A Pipeline were to rupture." << endl;
 
     int option;
     cin >> option;
@@ -91,7 +92,7 @@ void Menu::avoidFlowMenu(System system, Graph *graph) {
                 cout << "Not a valid code." << endl;
                 break;
             }
-            system.edmondsKarpAvoid(graph, code);
+            system.edmondsKarpAvoidNode(graph, code);
             system.cityNeeds(graph);
             break;
         }
@@ -104,7 +105,7 @@ void Menu::avoidFlowMenu(System system, Graph *graph) {
                     Graph *copy = new Graph();
                     copy->copyGraph(system.getGraph());
                     string code = node->getCode();
-                    system.edmondsKarpAvoid(copy, code);
+                    system.edmondsKarpAvoidNode(copy, code);
                     vector<pair<Node*, double>> newFlowInfo = system.cityFlowInfo(copy);
                     int size = originalFlowInfo.size();
                     bool header=false;
@@ -113,11 +114,48 @@ void Menu::avoidFlowMenu(System system, Graph *graph) {
                         if(originalFlowInfo[i].second != newFlowInfo[i].second && !header){
                             header = true;
                             found = true;
-                            cout << left << setw(20) << "City" << setw(15) << "Original flow" << setw(10) << "New flow" << "Difference" << endl;
-                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
+                            cout << left << setw(20) << "City" << setw(15) << "Original flow" << setw(10) << "New flow" << setw(10) << "Difference" << endl;
+                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
                         }
                         else if (originalFlowInfo[i].second != newFlowInfo[i].second){
-                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
+                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
+                        }
+                    }
+                    if(!found){
+                        cout << "There aren't any affected cities" << endl;
+                    }
+                    delete copy;
+                }
+            }
+            break;
+        }
+
+        case 3: {
+            system.edmondsKarp(graph);
+            vector<pair<Node*, double>> originalFlowInfo = system.cityFlowInfo(graph);
+            for(auto node : graph->getNodes()){
+                for(auto pipe : node->getAdj()){
+                    if(pipe->getSourceNode()->getType() == NodeType::SuperSource ||  pipe->getTarget()->getType() == NodeType::SuperSink){
+                        continue;
+                    }
+                    cout << endl << "Pipeline: " << pipe->getSourceNode()->getCode() << "->" << pipe->getTarget()->getCode() << endl;
+                    Graph *copy = new Graph();
+                    copy->copyGraph(system.getGraph());
+                    string code = pipe->getTarget()->getCode();
+                    system.edmondsKarpAvoidPipeline(copy, pipe);
+                    vector<pair<Node*, double>> newFlowInfo = system.cityFlowInfo(copy);
+                    int size = originalFlowInfo.size();
+                    bool header=false;
+                    bool found = false;
+                    for(int i = 0; i < size; i++){
+                        if(originalFlowInfo[i].second != newFlowInfo[i].second && !header){
+                            header = true;
+                            found = true;
+                            cout << left << setw(20) << "City" << setw(15) << "Original flow" << setw(10) << "New flow" << setw(10) << "Difference" << endl;
+                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
+                        }
+                        else if (originalFlowInfo[i].second != newFlowInfo[i].second){
+                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
                         }
                     }
                     if(!found){
