@@ -30,6 +30,7 @@ public:
     //Special Edmonds-Karp algorithm functions
     void edmondsKarpAvoid(Graph *copy, string avoid);
     bool findAugmentingPathAvoid(Graph *graph, Node *source, Node *sink, string avoid);
+    vector<pair<Node*, double>> cityFlowInfo(Graph *graph);
 
 };
 #endif //PROJETODA_SYSTEM_H

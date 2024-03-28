@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "System.h"
 #include "Menu.h"
 
@@ -95,16 +96,36 @@ void Menu::avoidFlowMenu(System system, Graph *graph) {
             break;
         }
         case 2: {
-            cout << "Please insert the code of the Pumping Station to be taken out." << endl;
-            string code;
-            cin >> code;
-            Node *chosenNode = graph->findNode(code);
-            if (chosenNode == nullptr || chosenNode->getType() != NodeType::PumpingStation) {
-                cout << "Not a valid code." << endl;
-                break;
+            system.edmondsKarp(graph);
+            vector<pair<Node*, double>> originalFlowInfo = system.cityFlowInfo(graph);
+            for(auto node : graph->getNodes()){
+                if(node->getType() == NodeType::PumpingStation){
+                    cout << endl << "Pumping Station: " << node->getCode() << endl;
+                    Graph *copy = new Graph();
+                    copy->copyGraph(system.getGraph());
+                    string code = node->getCode();
+                    system.edmondsKarpAvoid(copy, code);
+                    vector<pair<Node*, double>> newFlowInfo = system.cityFlowInfo(copy);
+                    int size = originalFlowInfo.size();
+                    bool header=false;
+                    bool found = false;
+                    for(int i = 0; i < size; i++){
+                        if(originalFlowInfo[i].second != newFlowInfo[i].second && !header){
+                            header = true;
+                            found = true;
+                            cout << left << setw(20) << "City" << setw(15) << "Original flow" << setw(10) << "New flow" << "Difference" << endl;
+                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
+                        }
+                        else if (originalFlowInfo[i].second != newFlowInfo[i].second){
+                            cout << left << setw(20) << originalFlowInfo[i].first->getName() << setw(15) << originalFlowInfo[i].second << setw(10) << newFlowInfo[i].second << newFlowInfo[i].second - originalFlowInfo[i].second << endl;
+                        }
+                    }
+                    if(!found){
+                        cout << "There aren't any affected cities" << endl;
+                    }
+                    delete copy;
+                }
             }
-            system.edmondsKarpAvoid(graph, code);
-            system.cityNeeds(graph);
             break;
         }
 

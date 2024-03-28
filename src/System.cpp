@@ -1,7 +1,3 @@
-//
-// Created by kamert on 19-03-2024.
-//
-
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -12,27 +8,27 @@ Graph System::getGraph() const {
 }
 
 System::System(){
-   readCities("../small_data/Cities_Madeira.csv");
-   readStations("../small_data/Stations_Madeira.csv");
-   readReservoir("../small_data/Reservoirs_Madeira.csv");
-   readPipes("../small_data/Pipes_Madeira.csv");
-   /*cout<<"Original Graph:"<<endl;
-   for(auto v : g.nodes){
-        cout<<"Node:"<<endl;
-        cout<< v->getCode() << endl;
-        cout<<endl;
-        cout<<"Outgoing:"<<endl;
-        for(auto e : v->getAdj()){
-            cout << e->getCapacity() <<" "<< e->getTarget()->getCode() <<" "<< e->getDirection() << endl;
-        }
-        cout<<endl;
-        cout<<"Incoming:"<<endl;
-        for(auto e : v->getIncoming()){
-            cout << e->getCapacity() <<" "<< e->getSourceNode()->getCode() <<" "<< e->getDirection() << endl;
-        }
-        cout<<endl;
-   }
-    */
+    readCities("../small_data/Cities_Madeira.csv");
+    readStations("../small_data/Stations_Madeira.csv");
+    readReservoir("../small_data/Reservoirs_Madeira.csv");
+    readPipes("../small_data/Pipes_Madeira.csv");
+    /*cout<<"Original Graph:"<<endl;
+    for(auto v : g.nodes){
+         cout<<"Node:"<<endl;
+         cout<< v->getCode() << endl;
+         cout<<endl;
+         cout<<"Outgoing:"<<endl;
+         for(auto e : v->getAdj()){
+             cout << e->getCapacity() <<" "<< e->getTarget()->getCode() <<" "<< e->getDirection() << endl;
+         }
+         cout<<endl;
+         cout<<"Incoming:"<<endl;
+         for(auto e : v->getIncoming()){
+             cout << e->getCapacity() <<" "<< e->getSourceNode()->getCode() <<" "<< e->getDirection() << endl;
+         }
+         cout<<endl;
+    }
+     */
 }
 
 void System::readCities(const string &filename) {
@@ -78,7 +74,7 @@ void System::readStations(const string &filename) {
         double id2 = stod(id);
         Node *nodecity = new Node(id2, code, NodeType::PumpingStation);
         g.addNode(nodecity);
-        }
+    }
     file2.close();
 }
 
@@ -148,7 +144,7 @@ void System::edmondsKarp(Graph *copy) {
         if(node->getType() == NodeType::WaterReservoir){
             superSource->addPipe(node, node->getMaxDeliveryCapacity(), 0);
         }
-        //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
+            //Connect cities (delivery sites) to super sink ("weight" of the pipeline is the demand of the city)
         else if(node->getType() == NodeType::City){
             node->addPipe(superSink, node->getDemand(), 0);
         }
@@ -226,15 +222,18 @@ void System::updateResidualGraph(Node *source, Node *sink, double bottleneck){
 void System::printFlow(Graph *graph, string choiceCode) {
     cout << "Code" << " " << "Value" << endl;
     if(choiceCode == "all"){
+        double maxFlow=0;
         for(auto n : graph->getNodes()){
             if(n->getType() == NodeType::City){
                 double flow = 0;
                 for(auto p : n->getIncoming()){
                     flow += p->getFlow();
                 }
+                maxFlow += flow;
                 cout << n->getCode() << " " << flow << endl;
             }
         }
+        cout<< "Total " << maxFlow << endl;
     }
     else{
         double flow=0;
@@ -343,4 +342,16 @@ bool System::findAugmentingPathAvoid(Graph *graph, Node *source, Node *sink, str
         }
     }
     return sink->isVisited();
+}
+
+vector<pair<Node*, double>> System::cityFlowInfo(Graph *graph){
+    vector<pair<Node*, double>> cityFlow;
+    for(auto node : graph->getNodes()){
+        if(node->getType() == NodeType::City){
+            double flow = 0;
+            for(auto p : node->getIncoming()) flow += p->getFlow();
+            cityFlow.push_back(make_pair(node, flow));
+        }
+    }
+    return cityFlow;
 }
