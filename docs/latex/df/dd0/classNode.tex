@@ -1,0 +1,68 @@
+\hypertarget{classNode}{}\doxysection{Node Class Reference}
+\label{classNode}\index{Node@{Node}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNode_a95d53e9d844cca160db9766ba5db0e56}\label{classNode_a95d53e9d844cca160db9766ba5db0e56}} 
+{\bfseries Node} (std\+::string name, double id, std\+::string code, double demand, double population, Node\+Type type)
+\item 
+\mbox{\Hypertarget{classNode_aeb375040cf9bb1edaec7fe069ef66439}\label{classNode_aeb375040cf9bb1edaec7fe069ef66439}} 
+{\bfseries Node} (std\+::string name, std\+::string municipality, double id, std\+::string code, double max\+Delivery\+Capacity, Node\+Type type)
+\item 
+\mbox{\Hypertarget{classNode_a8ae8b8668d5e9075a857b4c6a65b66cc}\label{classNode_a8ae8b8668d5e9075a857b4c6a65b66cc}} 
+{\bfseries Node} (double id, std\+::string code, Node\+Type type)
+\item 
+\mbox{\Hypertarget{classNode_a7f3cd2c4648fcde4ca562d8c0696246a}\label{classNode_a7f3cd2c4648fcde4ca562d8c0696246a}} 
+{\bfseries Node} (std\+::string code, Node\+Type type)
+\item 
+\mbox{\Hypertarget{classNode_a74c1599164111ab218858bbe0748a812}\label{classNode_a74c1599164111ab218858bbe0748a812}} 
+std\+::string {\bfseries get\+Name} () const
+\item 
+\mbox{\Hypertarget{classNode_a0280c3fb5bd1de2f7cc745fc1edcd221}\label{classNode_a0280c3fb5bd1de2f7cc745fc1edcd221}} 
+std\+::string {\bfseries get\+Municipality} () const
+\item 
+\mbox{\Hypertarget{classNode_ac7f9f140aa2da582ba73eeadb2d63370}\label{classNode_ac7f9f140aa2da582ba73eeadb2d63370}} 
+std\+::string {\bfseries get\+Code} () const
+\item 
+\mbox{\Hypertarget{classNode_ab2e2bf13c9d3b20480e6915fbb3d8875}\label{classNode_ab2e2bf13c9d3b20480e6915fbb3d8875}} 
+double {\bfseries get\+Id} () const
+\item 
+\mbox{\Hypertarget{classNode_a8fad79f65f64fc6c150574e023eb043f}\label{classNode_a8fad79f65f64fc6c150574e023eb043f}} 
+Node\+Type {\bfseries get\+Type} () const
+\item 
+\mbox{\Hypertarget{classNode_a25dc045bcaccc4164e1ca03fd6ab9eff}\label{classNode_a25dc045bcaccc4164e1ca03fd6ab9eff}} 
+double {\bfseries get\+Max\+Delivery\+Capacity} () const
+\item 
+\mbox{\Hypertarget{classNode_a362309cae3179728de694c2e34f42f3e}\label{classNode_a362309cae3179728de694c2e34f42f3e}} 
+double {\bfseries get\+Demand} () const
+\item 
+\mbox{\Hypertarget{classNode_ac158688311f62a000ae1db2442aaf99c}\label{classNode_ac158688311f62a000ae1db2442aaf99c}} 
+double {\bfseries get\+Population} () const
+\item 
+\mbox{\Hypertarget{classNode_ae11a2f26e1a0d1b02dd2629dd92674a2}\label{classNode_ae11a2f26e1a0d1b02dd2629dd92674a2}} 
+\mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$ {\bfseries get\+Path} () const
+\item 
+\mbox{\Hypertarget{classNode_a7d3ad684e4fcb80e39d1fb1868a28720}\label{classNode_a7d3ad684e4fcb80e39d1fb1868a28720}} 
+\mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$ {\bfseries add\+Pipe} (\mbox{\hyperlink{classNode}{Node}} $\ast$dest, double capacity, double direction)
+\item 
+\mbox{\Hypertarget{classNode_a97dd8f95e09a0516f8939627f94bd58e}\label{classNode_a97dd8f95e09a0516f8939627f94bd58e}} 
+bool {\bfseries is\+Visited} () const
+\item 
+\mbox{\Hypertarget{classNode_ace410393a03d2bef99ea10fabed6a1ae}\label{classNode_ace410393a03d2bef99ea10fabed6a1ae}} 
+void {\bfseries set\+Visited} (bool value)
+\item 
+\mbox{\Hypertarget{classNode_a9896262dac3a6bbada86f31fc45cc4e1}\label{classNode_a9896262dac3a6bbada86f31fc45cc4e1}} 
+void {\bfseries set\+Path} (\mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$path)
+\item 
+\mbox{\Hypertarget{classNode_a653adeae91544a1bb67efcfd0f7d1c5a}\label{classNode_a653adeae91544a1bb67efcfd0f7d1c5a}} 
+std\+::vector$<$ \mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$ $>$ {\bfseries get\+Adj} () const
+\item 
+\mbox{\Hypertarget{classNode_a133e1043b9ebcb2deb8a89ce176ef88e}\label{classNode_a133e1043b9ebcb2deb8a89ce176ef88e}} 
+std\+::vector$<$ \mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$ $>$ {\bfseries get\+Incoming} () const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Node.\+h\item 
+src/Node.\+cpp\end{DoxyCompactItemize}
