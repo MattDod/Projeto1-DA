@@ -6,24 +6,96 @@
 \mbox{\Hypertarget{classGraph_ac64223993d53457e543061d81597cc5a}\label{classGraph_ac64223993d53457e543061d81597cc5a}} 
 void {\bfseries add\+Node} (\mbox{\hyperlink{classNode}{Node}} $\ast$node)
 \item 
-\mbox{\Hypertarget{classGraph_a6b70b863398aa52df5e44dcf5f03562a}\label{classGraph_a6b70b863398aa52df5e44dcf5f03562a}} 
-bool {\bfseries add\+Pipe} (std\+::string \&source, std\+::string \&dest, double \&capacity, double \&direction)
-\item 
+bool \mbox{\hyperlink{classGraph_a6b70b863398aa52df5e44dcf5f03562a}{add\+Pipe}} (std\+::string \&source, std\+::string \&dest, double \&capacity, double \&direction)
+\begin{DoxyCompactList}\small\item\em Adiciona uma aresta entre dois nós no grafo com capacidade e direção especificadas. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classGraph_a2790ff85b9fa0729b6d03b0b87d552e5}\label{classGraph_a2790ff85b9fa0729b6d03b0b87d552e5}} 
 const std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}} $\ast$ $>$ {\bfseries get\+Nodes} () const
 \item 
-\mbox{\Hypertarget{classGraph_a0b3d60d26afba740831c05c2e00156ac}\label{classGraph_a0b3d60d26afba740831c05c2e00156ac}} 
-void {\bfseries copy\+Graph} (const \mbox{\hyperlink{classGraph}{Graph}} \&g)
-\item 
-\mbox{\Hypertarget{classGraph_a0843ec27644a8b1f86432012d50d9ba4}\label{classGraph_a0843ec27644a8b1f86432012d50d9ba4}} 
-\mbox{\hyperlink{classNode}{Node}} $\ast$ {\bfseries find\+Node} (std\+::string \&code) const
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classGraph_a0b3d60d26afba740831c05c2e00156ac}{copy\+Graph}} (const \mbox{\hyperlink{classGraph}{Graph}} \&g)
+\begin{DoxyCompactList}\small\item\em Copia os nós e as arestas de outro grafo para este grafo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNode}{Node}} $\ast$ \mbox{\hyperlink{classGraph_a0843ec27644a8b1f86432012d50d9ba4}{find\+Node}} (std\+::string \&code) const
+\begin{DoxyCompactList}\small\item\em Encontra um nó no grafo com base no código fornecido. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classGraph_ab8a3f8106de58af9e3f31cbf9e7bb021}\label{classGraph_ab8a3f8106de58af9e3f31cbf9e7bb021}} 
 std\+::vector$<$ \mbox{\hyperlink{classNode}{Node}} $\ast$ $>$ {\bfseries nodes}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a6b70b863398aa52df5e44dcf5f03562a}\label{classGraph_a6b70b863398aa52df5e44dcf5f03562a}} 
+\index{Graph@{Graph}!addPipe@{addPipe}}
+\index{addPipe@{addPipe}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addPipe()}{addPipe()}}
+{\footnotesize\ttfamily bool Graph\+::add\+Pipe (\begin{DoxyParamCaption}\item[{std\+::string \&}]{source,  }\item[{std\+::string \&}]{dest,  }\item[{double \&}]{capacity,  }\item[{double \&}]{direction }\end{DoxyParamCaption})}
+
+
+
+Adiciona uma aresta entre dois nós no grafo com capacidade e direção especificadas. 
+
+Esta função adiciona uma aresta direcionada entre os nós de origem e destino no grafo, com a capacidade e a direção fornecidas. Retorna verdadeiro se a aresta foi adicionada com sucesso, caso contrário, retorna falso se um dos nós não for encontrado no grafo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Código do nó de origem. \\
+\hline
+{\em dest} & Código do nó de destino. \\
+\hline
+{\em capacity} & Capacidade da aresta. \\
+\hline
+{\em direction} & Direção da aresta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(\+V), onde V é o número de vértices no grafo.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+Verdadeiro se a aresta foi adicionada com sucesso, falso caso contrário. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a0b3d60d26afba740831c05c2e00156ac}\label{classGraph_a0b3d60d26afba740831c05c2e00156ac}} 
+\index{Graph@{Graph}!copyGraph@{copyGraph}}
+\index{copyGraph@{copyGraph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{copyGraph()}{copyGraph()}}
+{\footnotesize\ttfamily void Graph\+::copy\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGraph}{Graph}} \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Copia os nós e as arestas de outro grafo para este grafo. 
+
+Esta função cria cópias de todos os nós e suas arestas do grafo fornecido e adiciona-\/os a este grafo que será usado com ferramente auxiliar em algoritmos seguintes
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Grafo a ser copiado.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(V + E), onde V é o número de vértices e E é o número de arestas no grafo fornecido. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classGraph_a0843ec27644a8b1f86432012d50d9ba4}\label{classGraph_a0843ec27644a8b1f86432012d50d9ba4}} 
+\index{Graph@{Graph}!findNode@{findNode}}
+\index{findNode@{findNode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{findNode()}{findNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classNode}{Node}} $\ast$ Graph\+::find\+Node (\begin{DoxyParamCaption}\item[{std\+::string \&}]{code }\end{DoxyParamCaption}) const}
+
+
+
+Encontra um nó no grafo com base no código fornecido. 
+
+Esta função percorre todos os nós no grafo e retorna o nó com o código correspondente, se encontrado. Se nenhum nó com o código fornecido for encontrado, retorna nullptr.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Código do nó a ser encontrado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(\+V), onde V é o número de vértices no grafo.
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+Ponteiro para o nó encontrado, ou nullptr se não encontrado. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

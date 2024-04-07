@@ -5,6 +5,13 @@
 class Node;
 class Pipeline {
 public:
+    /**
+    * @brief Construtor da classe pipeline
+    * @param source = no de origem
+    * @param target = no de destino
+    * @param capacity = capacidade da aresta/pipeline
+    * @param direction = indica a direção da pipeline
+    */
     Pipeline(Node *source, Node *target, double capacity, double direction);
 
     // Getter methods

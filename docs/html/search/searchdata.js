@@ -1,18 +1,21 @@
 var indexSectionsWithContent =
 {
-  0: "gmnps",
-  1: "gmnps"
+  0: "acefgmnprsu",
+  1: "gmnps",
+  2: "acefnprsu"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes"
+  1: "classes",
+  2: "functions"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Classes"
+  1: "Classes",
+  2: "Functions"
 };
 

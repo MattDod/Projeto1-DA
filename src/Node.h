@@ -17,6 +17,15 @@ enum class NodeType {
 
 class Node {
 public:
+    /**
+    * @brief Um dos varios construtores de um possivel no do tipo cidade
+    * @param name = nome da cidade
+    * @param id = id da cidade
+    * @param demand = demanda da cidade
+    * @param population = população da mesma
+    * @param type= ser-lhe-á atribuido o tipo cidade para distingir em relação aos outros nós
+    *
+    */
     Node(std::string name, double id, std::string code, double demand, double population, NodeType type);
     Node(std::string name, std::string municipality, double id, std::string code, double maxDeliveryCapacity, NodeType type); // Constructor for water reservoirs
     Node(double id, std::string code, NodeType type); // Constructor for delivery sites

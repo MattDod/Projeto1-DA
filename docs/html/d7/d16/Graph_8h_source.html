@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">1º. DA Project
    </div>
-   <div id="projectbrief">An analisys tool for Water Supply Management</div>
+   <div id="projectbrief">An Analisys Tool for Water Supply Management</div>
   </td>
  </tr>
  </tbody>
@@ -82,17 +82,19 @@ $(function() {
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// Method to add a node to the graph</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> addNode(<a class="code" href="../../df/dd0/classNode.html">Node</a> *node);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">bool</span> addPipe(std::string &amp;source, std::string &amp;dest, <span class="keywordtype">double</span> &amp;capacity, <span class="keywordtype">double</span> &amp;direction);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::vector&lt;Node *&gt; nodes;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// Getter method to retrieve all nodes in the graph</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">const</span> std::vector&lt;Node *&gt; getNodes() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> copyGraph(<span class="keyword">const</span> <a class="code" href="../../d2/d62/classGraph.html">Graph</a> &amp;g);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="../../df/dd0/classNode.html">Node</a> *findNode(std::string &amp;code) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PROJETODA_GRAPH_H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../d2/d62/classGraph.html#a6b70b863398aa52df5e44dcf5f03562a">addPipe</a>(std::string &amp;source, std::string &amp;dest, <span class="keywordtype">double</span> &amp;capacity, <span class="keywordtype">double</span> &amp;direction);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    std::vector&lt;Node *&gt; nodes;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Getter method to retrieve all nodes in the graph</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> std::vector&lt;Node *&gt; getNodes() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d2/d62/classGraph.html#a0b3d60d26afba740831c05c2e00156ac">copyGraph</a>(<span class="keyword">const</span> <a class="code" href="../../d2/d62/classGraph.html">Graph</a> &amp;g);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="../../df/dd0/classNode.html">Node</a> *<a class="code" href="../../d2/d62/classGraph.html#a0843ec27644a8b1f86432012d50d9ba4">findNode</a>(std::string &amp;code) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// PROJETODA_GRAPH_H</span></div>
 <div class="ttc" id="aclassGraph_html"><div class="ttname"><a href="../../d2/d62/classGraph.html">Graph</a></div><div class="ttdef"><b>Definition:</b> Graph.h:8</div></div>
+<div class="ttc" id="aclassGraph_html_a0843ec27644a8b1f86432012d50d9ba4"><div class="ttname"><a href="../../d2/d62/classGraph.html#a0843ec27644a8b1f86432012d50d9ba4">Graph::findNode</a></div><div class="ttdeci">Node * findNode(std::string &amp;code) const</div><div class="ttdoc">Encontra um nó no grafo com base no código fornecido.</div><div class="ttdef"><b>Definition:</b> Graph.cpp:24</div></div>
+<div class="ttc" id="aclassGraph_html_a0b3d60d26afba740831c05c2e00156ac"><div class="ttname"><a href="../../d2/d62/classGraph.html#a0b3d60d26afba740831c05c2e00156ac">Graph::copyGraph</a></div><div class="ttdeci">void copyGraph(const Graph &amp;g)</div><div class="ttdoc">Copia os nós e as arestas de outro grafo para este grafo.</div><div class="ttdef"><b>Definition:</b> Graph.cpp:33</div></div>
+<div class="ttc" id="aclassGraph_html_a6b70b863398aa52df5e44dcf5f03562a"><div class="ttname"><a href="../../d2/d62/classGraph.html#a6b70b863398aa52df5e44dcf5f03562a">Graph::addPipe</a></div><div class="ttdeci">bool addPipe(std::string &amp;source, std::string &amp;dest, double &amp;capacity, double &amp;direction)</div><div class="ttdoc">Adiciona uma aresta entre dois nós no grafo com capacidade e direção especificadas.</div><div class="ttdef"><b>Definition:</b> Graph.cpp:15</div></div>
 <div class="ttc" id="aclassNode_html"><div class="ttname"><a href="../../df/dd0/classNode.html">Node</a></div><div class="ttdef"><b>Definition:</b> Node.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -6,48 +6,351 @@
 \mbox{\Hypertarget{classSystem_ae5995e2de4d7c7a52be004372aadbb1b}\label{classSystem_ae5995e2de4d7c7a52be004372aadbb1b}} 
 \mbox{\hyperlink{classGraph}{Graph}} {\bfseries get\+Graph} () const
 \item 
-\mbox{\Hypertarget{classSystem_a2771331dc62376dc4a69ad0f4a3990d5}\label{classSystem_a2771331dc62376dc4a69ad0f4a3990d5}} 
-void {\bfseries read\+Cities} (const string \&filename)
-\item 
-\mbox{\Hypertarget{classSystem_a2bc88ec3225cac7dc861e629b3a57003}\label{classSystem_a2bc88ec3225cac7dc861e629b3a57003}} 
-void {\bfseries read\+Pipes} (const string \&filename)
-\item 
-\mbox{\Hypertarget{classSystem_af2b5c4ab667b8d3ff71c14edaba6a5d1}\label{classSystem_af2b5c4ab667b8d3ff71c14edaba6a5d1}} 
-void {\bfseries read\+Reservoir} (const string \&filename)
-\item 
-\mbox{\Hypertarget{classSystem_a787e8de3ac17b6396a7ce2d463ab1385}\label{classSystem_a787e8de3ac17b6396a7ce2d463ab1385}} 
-void {\bfseries read\+Stations} (const string \&filename)
-\item 
-\mbox{\Hypertarget{classSystem_a00afad55501afa627409a6e1cece4f14}\label{classSystem_a00afad55501afa627409a6e1cece4f14}} 
-void {\bfseries edmonds\+Karp} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$copy)
-\item 
-\mbox{\Hypertarget{classSystem_a91b2cc4279f15fd04ba9fb613b5ee009}\label{classSystem_a91b2cc4279f15fd04ba9fb613b5ee009}} 
-bool {\bfseries find\+Augmenting\+Path} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, \mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink)
-\item 
-\mbox{\Hypertarget{classSystem_a3b7202f417827cded0001168892543ca}\label{classSystem_a3b7202f417827cded0001168892543ca}} 
-double {\bfseries find\+Bottleneck\+Capacity} (\mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink)
-\item 
-\mbox{\Hypertarget{classSystem_ac484ec3c4a7da3b2b585f07e15605e7f}\label{classSystem_ac484ec3c4a7da3b2b585f07e15605e7f}} 
-void {\bfseries update\+Residual\+Graph} (\mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink, double bottleneck)
-\item 
-\mbox{\Hypertarget{classSystem_a6dbbfd2d4b8abe09a7a1786abe2a99c0}\label{classSystem_a6dbbfd2d4b8abe09a7a1786abe2a99c0}} 
-void {\bfseries print\+Flow} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, string choice\+Code)
-\item 
-\mbox{\Hypertarget{classSystem_a5b5e033cab3a83fd135a13577f7a7ec7}\label{classSystem_a5b5e033cab3a83fd135a13577f7a7ec7}} 
-void {\bfseries city\+Needs} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph)
-\item 
-\mbox{\Hypertarget{classSystem_af09361c566013c83edba6011ef3f9d6d}\label{classSystem_af09361c566013c83edba6011ef3f9d6d}} 
-void {\bfseries edmonds\+Karp\+Avoid\+Node} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$copy, string avoid)
-\item 
-\mbox{\Hypertarget{classSystem_aca2a9d91019401d637c790792d0d2a5e}\label{classSystem_aca2a9d91019401d637c790792d0d2a5e}} 
-void {\bfseries edmonds\+Karp\+Avoid\+Pipeline} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$copy, \mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$avoid)
-\item 
-\mbox{\Hypertarget{classSystem_a717802693a611a78365159c37d53e862}\label{classSystem_a717802693a611a78365159c37d53e862}} 
-bool {\bfseries find\+Augmenting\+Path\+Avoid} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, \mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink, string avoid)
-\item 
+\mbox{\hyperlink{classSystem_ae317936c9bcf1374d61745572e0f2f8a}{System}} ()
+\begin{DoxyCompactList}\small\item\em O construtor faz 3 chamadas, cada uma faz o parsing da informação dos ficheiros fornecidos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a2771331dc62376dc4a69ad0f4a3990d5}{read\+Cities}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Faz o parsing das Cidades. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a2bc88ec3225cac7dc861e629b3a57003}{read\+Pipes}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Faz o parsing das Pipes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_af2b5c4ab667b8d3ff71c14edaba6a5d1}{read\+Reservoir}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Faz o parsing dos Reservatórios. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a787e8de3ac17b6396a7ce2d463ab1385}{read\+Stations}} (const string \&filename)
+\begin{DoxyCompactList}\small\item\em Faz o parsing das Stations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a00afad55501afa627409a6e1cece4f14}{edmonds\+Karp}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$copy)
+\begin{DoxyCompactList}\small\item\em Implementa o algoritmo de Edmonds-\/\+Karp para encontrar o fluxo máximo em uma rede de fluxo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSystem_a91b2cc4279f15fd04ba9fb613b5ee009}{find\+Augmenting\+Path}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, \mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink)
+\begin{DoxyCompactList}\small\item\em Encontra um \char`\"{}augmenting path\char`\"{} no grafo residual. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classSystem_a3b7202f417827cded0001168892543ca}{find\+Bottleneck\+Capacity}} (\mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink)
+\begin{DoxyCompactList}\small\item\em Encontra a capacidade do gargalo ao longo do caminho de aumento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_ac484ec3c4a7da3b2b585f07e15605e7f}{update\+Residual\+Graph}} (\mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink, double bottleneck)
+\begin{DoxyCompactList}\small\item\em Atualiza o grafo residual após encontrar um caminho de aumento. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a6dbbfd2d4b8abe09a7a1786abe2a99c0}{print\+Flow}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, string choice\+Code)
+\begin{DoxyCompactList}\small\item\em Imprime o fluxo de cada cidade ou o fluxo total, dependendo da escolha. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_a5b5e033cab3a83fd135a13577f7a7ec7}{city\+Needs}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph)
+\begin{DoxyCompactList}\small\item\em Verifica as necessidades de cada cidade e imprime aquelas cuja demanda foi atendida e aquelas cuja demanda não foi atendida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_af09361c566013c83edba6011ef3f9d6d}{edmonds\+Karp\+Avoid\+Node}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$copy, string avoid)
+\begin{DoxyCompactList}\small\item\em Implementa o algoritmo de Edmonds-\/\+Karp para encontrar o fluxo máximo em uma rede de fluxo, evitando um determinado nó. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSystem_aca2a9d91019401d637c790792d0d2a5e}{edmonds\+Karp\+Avoid\+Pipeline}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$copy, \mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$avoid)
+\begin{DoxyCompactList}\small\item\em Implementa o algoritmo de Edmonds-\/\+Karp para encontrar o fluxo máximo em uma rede de fluxo, evitando um determinado pipeline. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSystem_a717802693a611a78365159c37d53e862}{find\+Augmenting\+Path\+Avoid}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph, \mbox{\hyperlink{classNode}{Node}} $\ast$source, \mbox{\hyperlink{classNode}{Node}} $\ast$sink, string avoid)
+\begin{DoxyCompactList}\small\item\em Encontra um caminho de aumento no grafo residual, evitando um determinado nó. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ \mbox{\hyperlink{classNode}{Node}} $\ast$, double $>$ $>$ \mbox{\hyperlink{classSystem_ab768bc4b37ebc9e066973bce612444c7}{city\+Flow\+Info}} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph)
+\begin{DoxyCompactList}\small\item\em Retorna informações sobre o fluxo de cada cidade no grafo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSystem_ae317936c9bcf1374d61745572e0f2f8a}\label{classSystem_ae317936c9bcf1374d61745572e0f2f8a}} 
+\index{System@{System}!System@{System}}
+\index{System@{System}!System@{System}}
+\doxysubsubsection{\texorpdfstring{System()}{System()}}
+{\footnotesize\ttfamily System\+::\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+O construtor faz 3 chamadas, cada uma faz o parsing da informação dos ficheiros fornecidos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & recebe parametros \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classSystem_ab768bc4b37ebc9e066973bce612444c7}\label{classSystem_ab768bc4b37ebc9e066973bce612444c7}} 
-vector$<$ pair$<$ \mbox{\hyperlink{classNode}{Node}} $\ast$, double $>$ $>$ {\bfseries city\+Flow\+Info} (\mbox{\hyperlink{classGraph}{Graph}} $\ast$graph)
-\end{DoxyCompactItemize}
+\index{System@{System}!cityFlowInfo@{cityFlowInfo}}
+\index{cityFlowInfo@{cityFlowInfo}!System@{System}}
+\doxysubsubsection{\texorpdfstring{cityFlowInfo()}{cityFlowInfo()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ \mbox{\hyperlink{classNode}{Node}} $\ast$, double $>$ $>$ System\+::city\+Flow\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph }\end{DoxyParamCaption})}
+
+
+
+Retorna informações sobre o fluxo de cada cidade no grafo. 
+
+Esta função calcula o fluxo total de entrada em cada cidade no grafo e retorna um vetor que contém pares de ponteiros para os nós das cidades e seus fluxos correspondentes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Ponteiro para o grafo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(V + E), onde V é o número de vértices no grafo e E é o número de arestas. 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+Um vetor de pares, onde cada par consiste em um ponteiro para um nó de cidade e o fluxo correspondente. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a5b5e033cab3a83fd135a13577f7a7ec7}\label{classSystem_a5b5e033cab3a83fd135a13577f7a7ec7}} 
+\index{System@{System}!cityNeeds@{cityNeeds}}
+\index{cityNeeds@{cityNeeds}!System@{System}}
+\doxysubsubsection{\texorpdfstring{cityNeeds()}{cityNeeds()}}
+{\footnotesize\ttfamily void System\+::city\+Needs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph }\end{DoxyParamCaption})}
+
+
+
+Verifica as necessidades de cada cidade e imprime aquelas cuja demanda foi atendida e aquelas cuja demanda não foi atendida. 
+
+Esta função calcula o fluxo total de entrada em cada cidade e verifica se a demanda foi atendida. Em seguida, imprime as cidades cuja demanda foi atendida e as que não foram atendidas.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Ponteiro para o grafo.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(\+V), onde V é o número de nós no grafo. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classSystem_a00afad55501afa627409a6e1cece4f14}\label{classSystem_a00afad55501afa627409a6e1cece4f14}} 
+\index{System@{System}!edmondsKarp@{edmondsKarp}}
+\index{edmondsKarp@{edmondsKarp}!System@{System}}
+\doxysubsubsection{\texorpdfstring{edmondsKarp()}{edmondsKarp()}}
+{\footnotesize\ttfamily void System\+::edmonds\+Karp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{copy }\end{DoxyParamCaption})}
+
+
+
+Implementa o algoritmo de Edmonds-\/\+Karp para encontrar o fluxo máximo em uma rede de fluxo. 
+
+Esta função cria um super nó de origem e um super nó de destino, conectando os reservatórios de água ao super nó de origem e as cidades ao super nó de destino. Em seguida, itera sobre o grafo residual, encontrando \char`\"{}\+Augmenting Paths\char`\"{} e atualizando o grafo residual até que não seja possível encontrar mais caminhos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & para o grafo de fluxo residual onde o algoritmo será executado.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal deste algoritmo é O(\+V $\ast$ E$^\wedge$2), onde V é o número de vértices no grafo e E é o número de arestas. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classSystem_af09361c566013c83edba6011ef3f9d6d}\label{classSystem_af09361c566013c83edba6011ef3f9d6d}} 
+\index{System@{System}!edmondsKarpAvoidNode@{edmondsKarpAvoidNode}}
+\index{edmondsKarpAvoidNode@{edmondsKarpAvoidNode}!System@{System}}
+\doxysubsubsection{\texorpdfstring{edmondsKarpAvoidNode()}{edmondsKarpAvoidNode()}}
+{\footnotesize\ttfamily void System\+::edmonds\+Karp\+Avoid\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{copy,  }\item[{string}]{avoid }\end{DoxyParamCaption})}
+
+
+
+Implementa o algoritmo de Edmonds-\/\+Karp para encontrar o fluxo máximo em uma rede de fluxo, evitando um determinado nó. 
+
+Esta função cria um super nó de origem e um super nó de destino, conectando os reservatórios de água ao super nó de origem e as cidades ao super nó de destino. Em seguida, itera sobre o grafo residual, encontrando caminhos aumentantes e atualizando o grafo residual até que não seja possível encontrar mais caminhos aumentantes, evitando um nó específico.
+
+
+\begin{DoxyParams}{Parameters}
+{\em copy} & Ponteiro para o grafo de fluxo residual onde o algoritmo será executado. \\
+\hline
+{\em avoid} & Código do nó a ser evitado durante a execução do algoritmo.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal deste algoritmo é O(\+V $\ast$ E$^\wedge$2), onde V é o número de vértices no grafo e E é o número de arestas. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classSystem_aca2a9d91019401d637c790792d0d2a5e}\label{classSystem_aca2a9d91019401d637c790792d0d2a5e}} 
+\index{System@{System}!edmondsKarpAvoidPipeline@{edmondsKarpAvoidPipeline}}
+\index{edmondsKarpAvoidPipeline@{edmondsKarpAvoidPipeline}!System@{System}}
+\doxysubsubsection{\texorpdfstring{edmondsKarpAvoidPipeline()}{edmondsKarpAvoidPipeline()}}
+{\footnotesize\ttfamily void System\+::edmonds\+Karp\+Avoid\+Pipeline (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{copy,  }\item[{\mbox{\hyperlink{classPipeline}{Pipeline}} $\ast$}]{avoid }\end{DoxyParamCaption})}
+
+
+
+Implementa o algoritmo de Edmonds-\/\+Karp para encontrar o fluxo máximo em uma rede de fluxo, evitando um determinado pipeline. 
+
+Esta função cria um super nó de origem e um super nó de destino, conectando os reservatórios de água ao super nó de origem e as cidades ao super nó de destino. Em seguida, itera sobre o grafo residual, encontrando caminhos aumentantes e atualizando o grafo residual até que não seja possível encontrar mais caminhos aumentantes, evitando uma pipeline específico.
+
+
+\begin{DoxyParams}{Parameters}
+{\em copy} & Ponteiro para o grafo de fluxo residual onde o algoritmo será executado. \\
+\hline
+{\em avoid} & Ponteiro para o pipeline a ser evitado durante a execução do algoritmo.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal deste algoritmo é O(\+V $\ast$ E$^\wedge$2), onde V é o número de vértices no grafo e E é o número de arestas. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classSystem_a91b2cc4279f15fd04ba9fb613b5ee009}\label{classSystem_a91b2cc4279f15fd04ba9fb613b5ee009}} 
+\index{System@{System}!findAugmentingPath@{findAugmentingPath}}
+\index{findAugmentingPath@{findAugmentingPath}!System@{System}}
+\doxysubsubsection{\texorpdfstring{findAugmentingPath()}{findAugmentingPath()}}
+{\footnotesize\ttfamily bool System\+::find\+Augmenting\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph,  }\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{sink }\end{DoxyParamCaption})}
+
+
+
+Encontra um \char`\"{}augmenting path\char`\"{} no grafo residual. 
+
+Esta função realiza uma busca em largura (BFS) para encontrar um caminho no grafo residual.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Ponteiro para o grafo residual. \\
+\hline
+{\em source} & Ponteiro para o nó de origem. \\
+\hline
+{\em sink} & Ponteiro para o nó de destino.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(V + E), onde V é o número de vértices e E é o número de arestas no grafo residual. 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+Verdadeiro se um caminho de aumento for encontrado, falso caso contrário. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a717802693a611a78365159c37d53e862}\label{classSystem_a717802693a611a78365159c37d53e862}} 
+\index{System@{System}!findAugmentingPathAvoid@{findAugmentingPathAvoid}}
+\index{findAugmentingPathAvoid@{findAugmentingPathAvoid}!System@{System}}
+\doxysubsubsection{\texorpdfstring{findAugmentingPathAvoid()}{findAugmentingPathAvoid()}}
+{\footnotesize\ttfamily bool System\+::find\+Augmenting\+Path\+Avoid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph,  }\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{sink,  }\item[{string}]{avoid }\end{DoxyParamCaption})}
+
+
+
+Encontra um caminho de aumento no grafo residual, evitando um determinado nó. 
+
+Esta função realiza uma busca em largura (BFS) para encontrar um caminho de aumento no grafo residual, evitando um nó específico durante a busca.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Ponteiro para o grafo residual. \\
+\hline
+{\em source} & Ponteiro para o nó de origem. \\
+\hline
+{\em sink} & Ponteiro para o nó de destino. \\
+\hline
+{\em avoid} & Código do nó a ser evitado durante a busca. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(V + E), onde V é o número de vértices no grafo e E é o número de arestas. 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
+Verdadeiro se um caminho de aumento for encontrado, falso caso contrário. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSystem_a3b7202f417827cded0001168892543ca}\label{classSystem_a3b7202f417827cded0001168892543ca}} 
+\index{System@{System}!findBottleneckCapacity@{findBottleneckCapacity}}
+\index{findBottleneckCapacity@{findBottleneckCapacity}!System@{System}}
+\doxysubsubsection{\texorpdfstring{findBottleneckCapacity()}{findBottleneckCapacity()}}
+{\footnotesize\ttfamily double System\+::find\+Bottleneck\+Capacity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{sink }\end{DoxyParamCaption})}
+
+
+
+Encontra a capacidade do gargalo ao longo do caminho de aumento. 
+
+Esta função calcula a capacidade do gargalo ao longo do caminho de aumento, que é o menor valor de capacidade residual ao longo do mesmo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Ponteiro para o nó de origem do caminho de aumento. \\
+\hline
+{\em sink} & Ponteiro para o nó de destino do caminho de aumento. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A capacidade do gargalo ao longo do caminho de aumento.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(\+V), onde V é o número de nós no caminho de aumento. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classSystem_a6dbbfd2d4b8abe09a7a1786abe2a99c0}\label{classSystem_a6dbbfd2d4b8abe09a7a1786abe2a99c0}} 
+\index{System@{System}!printFlow@{printFlow}}
+\index{printFlow@{printFlow}!System@{System}}
+\doxysubsubsection{\texorpdfstring{printFlow()}{printFlow()}}
+{\footnotesize\ttfamily void System\+::print\+Flow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}} $\ast$}]{graph,  }\item[{string}]{choice\+Code }\end{DoxyParamCaption})}
+
+
+
+Imprime o fluxo de cada cidade ou o fluxo total, dependendo da escolha. 
+
+Esta função imprime o fluxo de cada cidade ou o fluxo total, dependendo da escolha do usuário.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & Ponteiro para o grafo. \\
+\hline
+{\em choice\+Code} & Código da cidade ou \char`\"{}all\char`\"{} para imprimir o fluxo de todas as cidades.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(\+V), onde V é o número de nós no grafo. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{classSystem_a2771331dc62376dc4a69ad0f4a3990d5}\label{classSystem_a2771331dc62376dc4a69ad0f4a3990d5}} 
+\index{System@{System}!readCities@{readCities}}
+\index{readCities@{readCities}!System@{System}}
+\doxysubsubsection{\texorpdfstring{readCities()}{readCities()}}
+{\footnotesize\ttfamily void System\+::read\+Cities (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Faz o parsing das Cidades. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & = nome do ficheiro \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_a2bc88ec3225cac7dc861e629b3a57003}\label{classSystem_a2bc88ec3225cac7dc861e629b3a57003}} 
+\index{System@{System}!readPipes@{readPipes}}
+\index{readPipes@{readPipes}!System@{System}}
+\doxysubsubsection{\texorpdfstring{readPipes()}{readPipes()}}
+{\footnotesize\ttfamily void System\+::read\+Pipes (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Faz o parsing das Pipes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & = nome do ficheiro \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_af2b5c4ab667b8d3ff71c14edaba6a5d1}\label{classSystem_af2b5c4ab667b8d3ff71c14edaba6a5d1}} 
+\index{System@{System}!readReservoir@{readReservoir}}
+\index{readReservoir@{readReservoir}!System@{System}}
+\doxysubsubsection{\texorpdfstring{readReservoir()}{readReservoir()}}
+{\footnotesize\ttfamily void System\+::read\+Reservoir (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Faz o parsing dos Reservatórios. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & = nome do ficheiro \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_a787e8de3ac17b6396a7ce2d463ab1385}\label{classSystem_a787e8de3ac17b6396a7ce2d463ab1385}} 
+\index{System@{System}!readStations@{readStations}}
+\index{readStations@{readStations}!System@{System}}
+\doxysubsubsection{\texorpdfstring{readStations()}{readStations()}}
+{\footnotesize\ttfamily void System\+::read\+Stations (\begin{DoxyParamCaption}\item[{const string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Faz o parsing das Stations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & = nome do ficheiro \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSystem_ac484ec3c4a7da3b2b585f07e15605e7f}\label{classSystem_ac484ec3c4a7da3b2b585f07e15605e7f}} 
+\index{System@{System}!updateResidualGraph@{updateResidualGraph}}
+\index{updateResidualGraph@{updateResidualGraph}!System@{System}}
+\doxysubsubsection{\texorpdfstring{updateResidualGraph()}{updateResidualGraph()}}
+{\footnotesize\ttfamily void System\+::update\+Residual\+Graph (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{classNode}{Node}} $\ast$}]{sink,  }\item[{double}]{bottleneck }\end{DoxyParamCaption})}
+
+
+
+Atualiza o grafo residual após encontrar um caminho de aumento. 
+
+Esta função atualiza o grafo residual após encontrar um caminho de aumento, ajustando os fluxos nas arestas de acordo com a capacidade do gargalo ao longo do caminho de aumento.
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & Ponteiro para o nó de origem do caminho de aumento. \\
+\hline
+{\em sink} & Ponteiro para o nó de destino do caminho de aumento. \\
+\hline
+{\em bottleneck} & Capacidade do gargalo ao longo do caminho de aumento.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+A complexidade temporal desta função é O(\+V), onde V é o número de nós no caminho de aumento. 
+\end{DoxyRemark}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">1º. DA Project
    </div>
-   <div id="projectbrief">An analisys tool for Water Supply Management</div>
+   <div id="projectbrief">An Analisys Tool for Water Supply Management</div>
   </td>
  </tr>
  </tbody>
@@ -85,28 +85,31 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="../../d2/d62/classGraph.html">Graph</a> g;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="../../d2/d62/classGraph.html">Graph</a> getGraph() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="../../dd/d2d/classSystem.html">System</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> readCities(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> readPipes(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> readReservoir(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> readStations(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="comment">//Normal Edmonds-Karp algorithm functions</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> edmondsKarp(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *copy);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> findAugmentingPath(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph, <a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">double</span> findBottleneckCapacity(<a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> updateResidualGraph(<a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink, <span class="keywordtype">double</span> bottleneck);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> printFlow(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph, <span class="keywordtype">string</span> choiceCode);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> cityNeeds(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//Special Edmonds-Karp algorithm functions</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> edmondsKarpAvoidNode(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *copy, <span class="keywordtype">string</span> avoid);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> edmondsKarpAvoidPipeline(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *copy, <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *avoid);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">bool</span> findAugmentingPathAvoid(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph, <a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink, <span class="keywordtype">string</span> avoid);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    vector&lt;pair&lt;Node*, double&gt;&gt; cityFlowInfo(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETODA_SYSTEM_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="../../dd/d2d/classSystem.html">System</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> readCities(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> readPipes(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> readReservoir(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> readStations(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;filename);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//Normal Edmonds-Karp algorithm functions</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> edmondsKarp(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *copy);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> findAugmentingPath(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph, <a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">double</span> findBottleneckCapacity(<a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">void</span> updateResidualGraph(<a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink, <span class="keywordtype">double</span> bottleneck);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> printFlow(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph, <span class="keywordtype">string</span> choiceCode);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> cityNeeds(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">//Special Edmonds-Karp algorithm functions</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> edmondsKarpAvoidNode(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *copy, <span class="keywordtype">string</span> avoid);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> edmondsKarpAvoidPipeline(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *copy, <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *avoid);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordtype">bool</span> findAugmentingPathAvoid(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph, <a class="code" href="../../df/dd0/classNode.html">Node</a> *source, <a class="code" href="../../df/dd0/classNode.html">Node</a> *sink, <span class="keywordtype">string</span> avoid);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    vector&lt;pair&lt;Node*, double&gt;&gt; cityFlowInfo(<a class="code" href="../../d2/d62/classGraph.html">Graph</a> *graph);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;};</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETODA_SYSTEM_H</span></div>
 <div class="ttc" id="aclassGraph_html"><div class="ttname"><a href="../../d2/d62/classGraph.html">Graph</a></div><div class="ttdef"><b>Definition:</b> Graph.h:8</div></div>
 <div class="ttc" id="aclassNode_html"><div class="ttname"><a href="../../df/dd0/classNode.html">Node</a></div><div class="ttdef"><b>Definition:</b> Node.h:18</div></div>
 <div class="ttc" id="aclassPipeline_html"><div class="ttname"><a href="../../d7/d6a/classPipeline.html">Pipeline</a></div><div class="ttdef"><b>Definition:</b> Pipeline.h:6</div></div>

@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">1º. DA Project
    </div>
-   <div id="projectbrief">An analisys tool for Water Supply Management</div>
+   <div id="projectbrief">An Analisys Tool for Water Supply Management</div>
   </td>
  </tr>
  </tbody>
@@ -89,49 +89,50 @@ $(function() {
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../df/dd0/classNode.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/dd0/classNode.html">Node</a> {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="../../df/dd0/classNode.html">Node</a>(std::string name, <span class="keywordtype">double</span> <span class="keywordtype">id</span>, std::string code, <span class="keywordtype">double</span> demand, <span class="keywordtype">double</span> population, NodeType type);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="../../df/dd0/classNode.html">Node</a>(std::string name, std::string municipality, <span class="keywordtype">double</span> <span class="keywordtype">id</span>, std::string code, <span class="keywordtype">double</span> maxDeliveryCapacity, NodeType type); <span class="comment">// Constructor for water reservoirs</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="../../df/dd0/classNode.html">Node</a>(<span class="keywordtype">double</span> <span class="keywordtype">id</span>, std::string code, NodeType type); <span class="comment">// Constructor for delivery sites</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="../../df/dd0/classNode.html">Node</a>(std::string code, NodeType type); <span class="comment">// Constructor for super source/sink</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Getter methods</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::string getName() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::string getMunicipality() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string getCode() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">double</span> getId() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    NodeType getType() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">double</span> getMaxDeliveryCapacity() <span class="keyword">const</span>; <span class="comment">// For water reservoirs</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">double</span> getDemand() <span class="keyword">const</span>; <span class="comment">// For delivery sites</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">double</span> getPopulation() <span class="keyword">const</span>; <span class="comment">// For delivery sites and cities</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *getPath() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> * addPipe(<a class="code" href="../../df/dd0/classNode.html">Node</a> *dest, <span class="keywordtype">double</span> capacity, <span class="keywordtype">double</span> direction);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> isVisited() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> setVisited(<span class="keywordtype">bool</span> value);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> setPath(<a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *path);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::vector&lt;Pipeline *&gt; getAdj() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::vector&lt;Pipeline *&gt; getIncoming() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::string municipality;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::string code;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">double</span> id;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    NodeType type;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">double</span> maxDeliveryCapacity; <span class="comment">// For water reservoirs</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">double</span> demand; <span class="comment">// For delivery sites</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">double</span> population; <span class="comment">// For delivery sites and cities</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">double</span> currentFlow; <span class="comment">// For pumping stations</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> visited = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *path = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::vector&lt;Pipeline *&gt; adj;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::vector&lt;Pipeline *&gt; incoming;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETODA_NODE_H</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../df/dd0/classNode.html#a95d53e9d844cca160db9766ba5db0e56">Node</a>(std::string name, <span class="keywordtype">double</span> <span class="keywordtype">id</span>, std::string code, <span class="keywordtype">double</span> demand, <span class="keywordtype">double</span> population, NodeType type);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../df/dd0/classNode.html#a95d53e9d844cca160db9766ba5db0e56">Node</a>(std::string name, std::string municipality, <span class="keywordtype">double</span> <span class="keywordtype">id</span>, std::string code, <span class="keywordtype">double</span> maxDeliveryCapacity, NodeType type); <span class="comment">// Constructor for water reservoirs</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../df/dd0/classNode.html#a95d53e9d844cca160db9766ba5db0e56">Node</a>(<span class="keywordtype">double</span> <span class="keywordtype">id</span>, std::string code, NodeType type); <span class="comment">// Constructor for delivery sites</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../df/dd0/classNode.html#a95d53e9d844cca160db9766ba5db0e56">Node</a>(std::string code, NodeType type); <span class="comment">// Constructor for super source/sink</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Getter methods</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    std::string getName() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::string getMunicipality() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string getCode() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">double</span> getId() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    NodeType getType() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">double</span> getMaxDeliveryCapacity() <span class="keyword">const</span>; <span class="comment">// For water reservoirs</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> getDemand() <span class="keyword">const</span>; <span class="comment">// For delivery sites</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> getPopulation() <span class="keyword">const</span>; <span class="comment">// For delivery sites and cities</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *getPath() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> * addPipe(<a class="code" href="../../df/dd0/classNode.html">Node</a> *dest, <span class="keywordtype">double</span> capacity, <span class="keywordtype">double</span> direction);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> isVisited() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> setVisited(<span class="keywordtype">bool</span> value);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> setPath(<a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *path);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::vector&lt;Pipeline *&gt; getAdj() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::vector&lt;Pipeline *&gt; getIncoming() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::string name;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::string municipality;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    std::string code;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">double</span> id;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    NodeType type;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">double</span> maxDeliveryCapacity; <span class="comment">// For water reservoirs</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">double</span> demand; <span class="comment">// For delivery sites</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">double</span> population; <span class="comment">// For delivery sites and cities</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">double</span> currentFlow; <span class="comment">// For pumping stations</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">bool</span> visited = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../d7/d6a/classPipeline.html">Pipeline</a> *path = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::vector&lt;Pipeline *&gt; adj;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::vector&lt;Pipeline *&gt; incoming;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETODA_NODE_H</span></div>
 <div class="ttc" id="aclassNode_html"><div class="ttname"><a href="../../df/dd0/classNode.html">Node</a></div><div class="ttdef"><b>Definition:</b> Node.h:18</div></div>
+<div class="ttc" id="aclassNode_html_a95d53e9d844cca160db9766ba5db0e56"><div class="ttname"><a href="../../df/dd0/classNode.html#a95d53e9d844cca160db9766ba5db0e56">Node::Node</a></div><div class="ttdeci">Node(std::string name, double id, std::string code, double demand, double population, NodeType type)</div><div class="ttdoc">Um dos varios construtores de um possivel no do tipo cidade.</div><div class="ttdef"><b>Definition:</b> Node.cpp:4</div></div>
 <div class="ttc" id="aclassPipeline_html"><div class="ttname"><a href="../../d7/d6a/classPipeline.html">Pipeline</a></div><div class="ttdef"><b>Definition:</b> Pipeline.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
